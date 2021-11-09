@@ -1,0 +1,75 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="id.ac.umn.test"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="25"
+8-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="31" />
+9-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml
+10
+11    <application
+11-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:5:5-33:19
+12        android:allowBackup="true"
+12-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:6:9-35
+13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+13-->[androidx.core:core:1.5.0] C:\Users\User\.gradle\caches\transforms-3\109c406f854d135ad1ed87dae876b357\transformed\core-1.5.0\AndroidManifest.xml:24:18-86
+14        android:debuggable="true"
+15        android:extractNativeLibs="false"
+16        android:icon="@mipmap/plannerly"
+16-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:7:9-41
+17        android:label="@string/app_name"
+17-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:8:9-41
+18        android:roundIcon="@mipmap/plannerly_round"
+18-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:9:9-52
+19        android:supportsRtl="true"
+19-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:10:9-35
+20        android:testOnly="true"
+21        android:theme="@style/Theme.Test" >
+21-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:11:9-42
+22        <activity
+22-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:12:9-16:61
+23            android:name="id.ac.umn.test.MonthlyView"
+23-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:13:13-40
+24            android:exported="true"
+24-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:14:13-36
+25            android:label="@string/title_activity_monthly_view"
+25-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:15:13-64
+26            android:theme="@style/Theme.Test.NoActionBar" />
+26-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:16:13-58
+27        <activity
+27-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:17:9-19:39
+28            android:name="id.ac.umn.test.AddActivity"
+28-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:18:13-40
+29            android:exported="true" />
+29-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:19:13-36
+30        <activity
+30-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:20:9-22:39
+31            android:name="id.ac.umn.test.EditCalendar"
+31-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:21:13-41
+32            android:exported="true" />
+32-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:22:13-36
+33        <activity
+33-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:23:9-32:20
+34            android:name="id.ac.umn.test.MainActivity"
+34-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:24:13-41
+35            android:exported="true"
+35-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:25:13-36
+36            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" >
+36-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:26:13-72
+37            <intent-filter>
+37-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:27:13-31:29
+38                <action android:name="android.intent.action.MAIN" />
+38-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:28:17-69
+38-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:28:25-66
+39
+40                <category android:name="android.intent.category.LAUNCHER" />
+40-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:30:17-77
+40-->E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:30:27-74
+41            </intent-filter>
+42        </activity>
+43    </application>
+44
+45</manifest>
