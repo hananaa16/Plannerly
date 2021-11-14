@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".AddPlannery">
 
     <TextView
         android:id="@+id/tanggalAdd"
@@ -138,7 +138,7 @@
         android:layout_marginRight="50sp"
         android:background="@drawable/outer"/>
 
-    <TextView
+    <EditText
         android:id="@+id/gambarMapsAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
