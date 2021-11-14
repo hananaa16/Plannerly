@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/drawable/button_border.xml" value="0.19583333333333333" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/drawable/ic_dot.xml" value="0.1" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/drawable/ic_message_black_48dp.xml" value="0.19583333333333333" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/drawable/icon.xml" value="0.19282051282051282" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/drawable/outer.xml" value="0.19282051282051282" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/drawable/rounded_corners.xml" value="0.19583333333333333" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/drawable/sample_icon.xml" value="0.19583333333333333" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/drawable/title.xml" value="0.19282051282051282" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/layout/activity_add.xml" value="0.1796875" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/layout/activity_edit_calendar.xml" value="0.1" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/layout/activity_main2.xml" value="0.1796875" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/layout/activity_monthly_view.xml" value="0.13333333333333333" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/layout/activity_test.xml" value="0.1" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/layout/content_main.xml" value="0.4466666666666667" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/layout/content_monthly_view.xml" value="0.1" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/layout/fragment_first.xml" value="0.1796875" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/layout/fragment_first2.xml" value="0.1" />
+        <entry key="..\:/Denisha/UMN/Semester 5/Mobile Application Programming/Lab/UAS/Test/app/src/main/res/menu/menu.xml" value="0.1796875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tanggalEdit"
+        android:layout_width="411dp"
+        android:layout_height="64dp"
+        android:background="@color/teal_700"
+        android:paddingTop="15sp"
+        android:paddingBottom="15sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="25sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-3dp" />
+
+    <TextView
+        android:id="@+id/titleEdit"
+        android:layout_marginTop="50sp"
+        android:layout_marginLeft="50sp"
+        android:layout_marginRight="50sp"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:text="Edit Your Planner!"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:background="@drawable/title"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/iconEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Icon"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_marginTop="-70dp"
+        android:layout_marginLeft="320dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/icon"/>
+
+    <TextView
+        android:id="@+id/iconEdit1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Icon"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50sp"
+        android:height="50sp"
+        android:layout_marginRight="300sp"
+        android:background="@drawable/outer"/>
+
+    <EditText
+        android:id="@+id/judulEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Judul"
+        android:gravity="center"
+        android:layout_marginTop="-50dp"
+        android:layout_marginLeft="110sp"
+        android:height="50sp"
+        android:layout_marginRight="50sp"
+        android:background="@drawable/outer"/>
+
+    <EditText
+        android:id="@+id/deskripsiEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Deskripsi"
+        android:gravity="center"
+        android:layout_marginLeft="50sp"
+        android:height="100sp"
+        android:layout_marginRight="50sp"
+        android:background="@drawable/outer"/>
+
+    <TextView
+        android:id="@+id/iconEdit2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Icon"
+        android:gravity="center"
+        android:layout_marginLeft="50sp"
+        android:height="50sp"
+        android:layout_marginRight="300sp"
+        android:background="@drawable/outer"/>
+
+    <EditText
+        android:id="@+id/waktuEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Waktu"
+        android:gravity="center"
+        android:layout_marginTop="-50dp"
+        android:layout_marginLeft="110sp"
+        android:height="50sp"
+        android:layout_marginRight="50sp"
+        android:background="@drawable/outer"/>
+
+    <TextView
+        android:id="@+id/iconEdit3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Icon"
+        android:gravity="center"
+        android:layout_marginLeft="50sp"
+        android:height="50sp"
+        android:layout_marginRight="300sp"
+        android:background="@drawable/outer"/>
+
+    <EditText
+        android:id="@+id/fotoEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Foto"
+        android:gravity="center"
+        android:layout_marginTop="-50dp"
+        android:layout_marginLeft="110sp"
+        android:height="50sp"
+        android:layout_marginRight="50sp"
+        android:background="@drawable/outer"/>
+
+    <TextView
+        android:id="@+id/mapsEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Maps"
+        android:gravity="center"
+        android:layout_marginLeft="50sp"
+        android:height="35sp"
+        android:layout_marginRight="50sp"
+        android:background="@drawable/outer"/>
+
+    <TextView
+        android:id="@+id/gambarMapsEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Gambar Maps"
+        android:gravity="center"
+        android:layout_marginLeft="50sp"
+        android:height="100sp"
+        android:layout_marginRight="50sp"
+        android:background="@drawable/outer"/>
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:padding="15dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginRight="150dp"
+        android:onClick="editData"
+        android:text="Save" />
+
+</LinearLayout>
