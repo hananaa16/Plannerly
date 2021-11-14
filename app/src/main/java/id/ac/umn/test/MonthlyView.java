@@ -16,6 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -35,7 +38,8 @@ public class MonthlyView extends AppCompatActivity {
     private ActivityMonthlyViewBinding binding;
     public static final String RESULT = "result";
     public static final String EVENT = "event";
-    private static final int ADD_NOTE = 44;
+    public static final int ADD_NOTE = 44;
+    public Button bView;
     CalendarView calendarView;
     List<EventDay> mEventDays = new ArrayList<>();
     private Calendar calendar = Calendar.getInstance();
@@ -47,20 +51,40 @@ public class MonthlyView extends AppCompatActivity {
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
         calendarView = (CalendarView) findViewById(R.id.calendar);
+        bView = (Button) findViewById(R.id.picker);
+        setTitle("Monthly View");
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+        bView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MonthlyView.this, AddActivity.class);
-                startActivityForResult(intent, ADD_NOTE);
+                PopupMenu dropDownMenu = new PopupMenu(getApplicationContext(), bView);
+                dropDownMenu.getMenuInflater().inflate(R.menu.dropdown_menu, dropDownMenu.getMenu());
+                dropDownMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+//                        if (menuItem.getTitle() == "Daily Calendar View") {
+//                            Intent intent = new Intent(this, )
+//                        }
+                        return true;
+                    }
+                });
+                dropDownMenu.show();
             }
         });
+
+//        binding.fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MonthlyView.this, AddActivity.class);
+//                startActivityForResult(intent, ADD_NOTE);
+//            }
+//        });
 
         calendarView.setOnDayClickListener(new OnDayClickListener() {
             @Override
             public void onDayClick(EventDay eventDay) {
                 Calendar clicked = eventDay.getCalendar();
-                Intent intent = new Intent(MonthlyView.this, EditCalendar.class);
+                Intent intent = new Intent(MonthlyView.this, DetailActivity.class);
                 if (eventDay instanceof MyEventDay) {
                     intent.putExtra(EVENT, (MyEventDay) eventDay);
                 }
@@ -111,5 +135,11 @@ public class MonthlyView extends AppCompatActivity {
             mEventDays.add(new EventDay(calendar, R.drawable.icon));
             calendarView.setEvents(mEventDays);
         }
+    }
+
+    @Override
+    public void onBackPressed(){
+        finishAffinity();
+        System.exit(0);
     }
 }

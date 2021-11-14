@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-35:12
-INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-35:12
-INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-35:12
-INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-35:12
+ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-40:12
+INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-40:12
+INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-40:12
+INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-40:12
 MERGED from [androidx.databinding:viewbinding:7.0.1] C:\Users\User\.gradle\caches\transforms-3\ff5d982a54f36c84e4fced91462e97bb\transformed\jetified-viewbinding-7.0.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-ui:2.3.5] C:\Users\User\.gradle\caches\transforms-3\d033d0a4869757500b01256d22c25854\transformed\navigation-ui-2.3.5\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\User\.gradle\caches\transforms-3\b401bbd386ef73872b0073bd55ee1f0b\transformed\material-1.4.0\AndroidManifest.xml:17:1-24:12
@@ -45,25 +45,25 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\User\.gradle\cac
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\User\.gradle\caches\transforms-3\cdab6885b438a759bbebc3bab0411230\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\User\.gradle\caches\transforms-3\364cd11e18b25eea3f64fd0a4b722373\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\User\.gradle\caches\transforms-3\3b9b53105509eef60ab6de9e9a319267\transformed\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-35:12
-INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-35:12
-INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-40:12
+INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-40:12
+INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-40:12
 	package
 		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:3:5-29
 		INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml
 		INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml
-		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-35:12
+		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-40:12
 		INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml
-		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-35:12
+		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-40:12
 		INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:5:5-33:19
+ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:5:5-38:19
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\User\.gradle\caches\transforms-3\b401bbd386ef73872b0073bd55ee1f0b\transformed\material-1.4.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\User\.gradle\caches\transforms-3\b401bbd386ef73872b0073bd55ee1f0b\transformed\material-1.4.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.1] C:\Users\User\.gradle\caches\transforms-3\03e2d46c86bd93bfb33846ce2f4303cc\transformed\constraintlayout-2.1.1\AndroidManifest.xml:9:5-20
@@ -86,46 +86,56 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Us
 		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:6:9-35
 	android:theme
 		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:11:9-42
-activity#id.ac.umn.test.MonthlyView
+activity#id.ac.umn.test.DetailActivity
 ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:12:9-16:61
 	android:label
-		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:15:13-64
+		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:15:13-58
 	android:exported
 		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:14:13-36
 	android:theme
 		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:16:13-58
 	android:name
-		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:13:13-40
-activity#id.ac.umn.test.AddActivity
-ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:17:9-19:39
+		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:13:13-43
+activity#id.ac.umn.test.MonthlyView
+ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:17:9-21:61
+	android:label
+		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:20:13-64
 	android:exported
 		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:19:13-36
+	android:theme
+		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:21:13-58
 	android:name
 		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:18:13-40
+activity#id.ac.umn.test.AddActivity
+ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:22:9-24:39
+	android:exported
+		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:24:13-36
+	android:name
+		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:23:13-40
 activity#id.ac.umn.test.EditCalendar
-ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:20:9-22:39
+ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:25:9-27:39
 	android:exported
-		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:22:13-36
+		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:27:13-36
 	android:name
-		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:21:13-41
+		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:26:13-41
 activity#id.ac.umn.test.MainActivity
-ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:23:9-32:20
+ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:28:9-37:20
 	android:exported
-		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:25:13-36
+		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:30:13-36
 	android:theme
-		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:26:13-72
+		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:31:13-72
 	android:name
-		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:24:13-41
+		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:29:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:27:13-31:29
+ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:32:13-36:29
 action#android.intent.action.MAIN
-ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:28:17-69
+ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:33:17-69
 	android:name
-		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:28:25-66
+		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:33:25-66
 category#android.intent.category.LAUNCHER
-ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:30:17-77
+ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:35:17-77
 	android:name
-		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:30:27-74
+		ADDED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:35:27-74
 uses-sdk
 INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml
