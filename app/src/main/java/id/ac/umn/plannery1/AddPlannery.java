@@ -34,7 +34,7 @@ public class AddPlannery extends AppCompatActivity {
 
         awesomeValidation.addValidation(this, R.id.judulAdd, RegexTemplate.NOT_EMPTY, R.string.invalid_judul);
         awesomeValidation.addValidation(this, R.id.deskripsiAdd, RegexTemplate.NOT_EMPTY, R.string.invalid_deskripsi);
-        awesomeValidation.addValidation(this, R.id.waktuAdd, "[5-9]{1}[0-9]{9}$", R.string.invalid_waktu);
+        awesomeValidation.addValidation(this, R.id.waktuAdd, "[0-9]{2}:[0-9]{2}$", R.string.invalid_waktu);
 
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
