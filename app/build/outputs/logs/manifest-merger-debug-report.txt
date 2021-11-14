@@ -6,6 +6,7 @@ INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\T
 INJECTED from E:\Denisha\UMN\Semester 5\Mobile Application Programming\Lab\UAS\Test\app\src\main\AndroidManifest.xml:2:1-40:12
 MERGED from [androidx.databinding:viewbinding:7.0.1] C:\Users\User\.gradle\caches\transforms-3\ff5d982a54f36c84e4fced91462e97bb\transformed\jetified-viewbinding-7.0.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-ui:2.3.5] C:\Users\User\.gradle\caches\transforms-3\d033d0a4869757500b01256d22c25854\transformed\navigation-ui-2.3.5\AndroidManifest.xml:17:1-24:12
+MERGED from [com.basgeekball:awesome-validation:4.2] C:\Users\User\.gradle\caches\transforms-3\9f5713c9f9fee13a385f6a3cb708ace1\transformed\jetified-awesome-validation-4.2\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\User\.gradle\caches\transforms-3\b401bbd386ef73872b0073bd55ee1f0b\transformed\material-1.4.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.applandeo:material-calendar-view:1.7.0] C:\Users\User\.gradle\caches\transforms-3\124ee3f62a1261b99cdf0eddb06e39d5\transformed\jetified-material-calendar-view-1.7.0\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.1] C:\Users\User\.gradle\caches\transforms-3\03e2d46c86bd93bfb33846ce2f4303cc\transformed\constraintlayout-2.1.1\AndroidManifest.xml:2:1-11:12
@@ -144,6 +145,8 @@ MERGED from [androidx.databinding:viewbinding:7.0.1] C:\Users\User\.gradle\cache
 MERGED from [androidx.databinding:viewbinding:7.0.1] C:\Users\User\.gradle\caches\transforms-3\ff5d982a54f36c84e4fced91462e97bb\transformed\jetified-viewbinding-7.0.1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.navigation:navigation-ui:2.3.5] C:\Users\User\.gradle\caches\transforms-3\d033d0a4869757500b01256d22c25854\transformed\navigation-ui-2.3.5\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-ui:2.3.5] C:\Users\User\.gradle\caches\transforms-3\d033d0a4869757500b01256d22c25854\transformed\navigation-ui-2.3.5\AndroidManifest.xml:20:5-22:41
+MERGED from [com.basgeekball:awesome-validation:4.2] C:\Users\User\.gradle\caches\transforms-3\9f5713c9f9fee13a385f6a3cb708ace1\transformed\jetified-awesome-validation-4.2\AndroidManifest.xml:7:5-9:41
+MERGED from [com.basgeekball:awesome-validation:4.2] C:\Users\User\.gradle\caches\transforms-3\9f5713c9f9fee13a385f6a3cb708ace1\transformed\jetified-awesome-validation-4.2\AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\User\.gradle\caches\transforms-3\b401bbd386ef73872b0073bd55ee1f0b\transformed\material-1.4.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\User\.gradle\caches\transforms-3\b401bbd386ef73872b0073bd55ee1f0b\transformed\material-1.4.0\AndroidManifest.xml:20:5-44
 MERGED from [com.applandeo:material-calendar-view:1.7.0] C:\Users\User\.gradle\caches\transforms-3\124ee3f62a1261b99cdf0eddb06e39d5\transformed\jetified-material-calendar-view-1.7.0\AndroidManifest.xml:7:5-9:41
