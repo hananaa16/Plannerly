@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "id.ac.umn.calendar2"
-        minSdk 25
+        minSdk 24
         targetSdk 31
         versionCode 1
         versionName "1.0"

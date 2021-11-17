@@ -1,5 +1,6 @@
 package id.ac.umn.calendar2;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -12,16 +13,24 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import id.ac.umn.calendar2.databinding.ActivityDetailBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.LinkedList;
+
 public class DetailActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityDetailBinding binding;
+    RecyclerView rvDaftarMusik;
+    DailyPlannerAdapter mAdapter;
+    LinkedList<SourcePlanner> daftarMusik= new LinkedList<>();
+    String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +38,7 @@ public class DetailActivity extends AppCompatActivity {
 
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         setSupportActionBar(binding.toolbar);
-
-
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +47,12 @@ public class DetailActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        isiDaftarMusik();
+
+        rvDaftarMusik = (RecyclerView) findViewById(R.id.rvDailyTask);
+        mAdapter = new DailyPlannerAdapter(this, daftarMusik);
+        rvDaftarMusik.setAdapter(mAdapter);
+        rvDaftarMusik.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
@@ -64,6 +76,16 @@ public class DetailActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void isiDaftarMusik(){
+
+        daftarMusik.add(new SourcePlanner("Rapat BPH Koor", "Rapat", "PPT","android.resource://" +getPackageName() + "/"+ R.raw.wowsfx));
+        daftarMusik.add(new SourcePlanner("Tugas Akhir", "Tugas", "Makalah","android.resource://" +getPackageName() + "/"+ R.raw.kleeboom1));
+
+
+
+    }
+
 
 
 }
