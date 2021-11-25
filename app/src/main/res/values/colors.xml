@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="biru1">#46CDF7</color>
+    <color name="biru2">#BDDBED</color>
+    <color name="biru3">#B0F8FF</color>
+
+    <color name="ungu1">#A3A3E2</color>
+    <color name="ungu2">#D7D1F5</color>
+
+    <color name="kuning1">#FFD25A</color>
+    <color name="kuning2">#FFE7A6</color>
+
+    <color name="hijau1">#95D2D8</color>
+    <color name="hijau2">#B1E1C4</color>
+    <color name="hijau3">#32D9C5</color>
+
+    <color name="pink1">#F5B2B6</color>
+    <color name="pink2">#FF8080</color>
+    <color name="pink3">#DC3E34</color>
+
+    <color name="white">#FFFFFF</color>
+</resources>
