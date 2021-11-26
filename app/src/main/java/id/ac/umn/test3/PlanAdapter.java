@@ -1,36 +1,28 @@
 package id.ac.umn.test3;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.time.LocalTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
-import javax.xml.transform.Source;
-
-public class HourAdapter extends RecyclerView.Adapter<HourAdapter.ItemVideoViewHolder> {
-    private LinkedList<SourcePlanner> mDaftarMusik;
+public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.ItemVideoViewHolder> {
+    private ArrayList<SourcePlanner> mDaftarPlan;
     private LayoutInflater mInflater;
     private Context mContext;
 
-    public HourAdapter(Context context, LinkedList<SourcePlanner> daftarMusik) {
+    public PlanAdapter(Context context, ArrayList<SourcePlanner> daftarPlan) {
         this.mContext = context;
-        this.mDaftarMusik = daftarMusik;
+        this.mDaftarPlan = daftarPlan;
         this.mInflater = LayoutInflater.from(context);
     }
 
@@ -44,46 +36,47 @@ public class HourAdapter extends RecyclerView.Adapter<HourAdapter.ItemVideoViewH
 
     @Override
     public void onBindViewHolder(@NonNull ItemVideoViewHolder holder, int position) {
-        SourcePlanner mSumberMusik = mDaftarMusik.get(position);
-        holder.libraryJudul.setText(mSumberMusik.getJudul());
-        holder.libraryKategori.setText(mSumberMusik.getKategori());
-        holder.libraryDeskripsi.setText(mSumberMusik.getDeskripsi());
-//        holder.btnDelete.setOnClickListener((view -> {
-//            deleteFile(position, view);
-//        }));
+        SourcePlanner mPlan = mDaftarPlan.get(position);
+        holder.libraryJudul.setText(mPlan.getJudul());
+        holder.libraryTime.setText(mPlan.getTime());
+        holder.libraryDeskripsi.setText(mPlan.getDeskripsi());
+        holder.libraryDate.setText(mPlan.getDate().format(DateTimeFormatter.ofPattern("d MMMM yyyy")));
+        holder.btnDelete.setOnClickListener((view -> {
+            deleteFile(position, view);
+        }));
     }
 
     public void deleteFile(int position, View v) {
-        mDaftarMusik.remove(position);
-        Toast.makeText(v.getContext(), "Lagu telah dihapus! ", Toast.LENGTH_LONG).show();
+        DBHelper dbHelper = DBHelper.instanceOfDatabase(mContext);
+        dbHelper.deletePlanInDB(mDaftarPlan.get(position));
+        mDaftarPlan.remove(position);
+        Toast.makeText(v.getContext(), "Plan telah dihapus! ", Toast.LENGTH_LONG).show();
         notifyItemChanged(position);
-        notifyItemRangeChanged(position, mDaftarMusik.size());
+//        notifyItemRangeChanged(position, mDaftarPlan.size());
     }
 
     @Override
     public int getItemCount() {
-        if (mDaftarMusik != null) {
-            return mDaftarMusik.size();
-        } else {
-            return 0;
-        }
+        return mDaftarPlan.size();
     }
 
     public static class ItemVideoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView libraryJudul;
-        private TextView libraryKategori;
         private TextView libraryDeskripsi;
+        private TextView libraryTime;
+        private TextView libraryDate;
         private int mPosisi;
-        private SourcePlanner mSumberMusik;
+        private SourcePlanner mSumberPlan;
         private ImageButton btnDelete;
 
         public ItemVideoViewHolder(View itemView) {
             super(itemView);
             libraryJudul = (TextView) itemView.findViewById(R.id.tvJudulTask);
-            libraryKategori = (TextView) itemView.findViewById(R.id.tvLokasiTask);
+            libraryTime = (TextView) itemView.findViewById(R.id.tvWaktuTask);
             libraryDeskripsi = (TextView) itemView.findViewById(R.id.tvKetTask);
+            libraryDate = (TextView) itemView.findViewById(R.id.tvTanggalTask);
             btnDelete = (ImageButton) itemView.findViewById(R.id.btnDeleteTask);
-//            itemView.setOnClickListener(this);
+            itemView.setOnClickListener(this);
         }
 
         @Override

@@ -91,7 +91,7 @@
 <!--        android:textSize="20sp" />-->
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/hourListView"
+        android:id="@+id/planListView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5" />

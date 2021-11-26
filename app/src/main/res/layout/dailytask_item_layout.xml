@@ -58,15 +58,15 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvKetTask"
-                    android:text="Keterangan">
+                    android:id="@+id/tvWaktuTask"
+                    android:text="Waktu Task">
                 </TextView>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvLokasiTask"
-                    android:text="Lokasi Task">
+                    android:id="@+id/tvKetTask"
+                    android:text="Keterangan">
                 </TextView>
 
                 <LinearLayout

@@ -2,19 +2,14 @@ package id.ac.umn.test3;
 
 import static id.ac.umn.test3.CalendarUtils.selectedDate;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,14 +17,9 @@ import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.LinkedList;
 
 import id.ac.umn.test3.databinding.ActivityAddBinding;
-import id.ac.umn.test3.databinding.ActivityWeekViewBinding;
 
 public class AddActivity extends AppCompatActivity {
     EditText etJudul;
@@ -38,11 +28,10 @@ public class AddActivity extends AppCompatActivity {
     EditText etFoto;
     EditText etMaps;
     Button btnAdd;
-    HourAdapter adapter;
+    PlanAdapter adapter;
     LinkedList<SourcePlanner> daftarMusik= new LinkedList<>();
     private ActivityAddBinding binding;
     AwesomeValidation awesomeValidation;
-    DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +49,7 @@ public class AddActivity extends AppCompatActivity {
         etFoto = findViewById(R.id.fotoAdd);
         etMaps = findViewById(R.id.gambarMapsAdd);
         btnAdd = findViewById(R.id.add);
-        DB = new DBHelper(this);
+        DBHelper dbHelper = DBHelper.instanceOfDatabase(this);
 
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
 
@@ -71,11 +60,14 @@ public class AddActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int id = daftarMusik.size();
                 String judul = etJudul.getText().toString();
                 String waktu = etWaktu.getText().toString();
                 String deskripsi = etDeskripsi.getText().toString();
                 if (awesomeValidation.validate()){
-                    daftarMusik.add(new SourcePlanner(judul, waktu, deskripsi));
+                    SourcePlanner sp = new SourcePlanner(judul, deskripsi, waktu, selectedDate);
+                    SourcePlanner.sourcePlannerArrayList.add(sp);
+                    dbHelper.insertPlan(sp);
                     Toast.makeText(getApplicationContext(), "Your plan is successfully added.", Toast.LENGTH_SHORT).show();
                     finish();
                 }else{
