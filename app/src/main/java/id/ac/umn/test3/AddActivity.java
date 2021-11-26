@@ -2,6 +2,7 @@ package id.ac.umn.test3;
 
 import static id.ac.umn.test3.CalendarUtils.selectedDate;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,6 +31,7 @@ public class AddActivity extends AppCompatActivity {
     Button btnAdd;
     PlanAdapter adapter;
     LinkedList<SourcePlanner> daftarMusik= new LinkedList<>();
+    private SourcePlanner selectedPlan;
     private ActivityAddBinding binding;
     AwesomeValidation awesomeValidation;
 
@@ -50,9 +52,8 @@ public class AddActivity extends AppCompatActivity {
         etMaps = findViewById(R.id.gambarMapsAdd);
         btnAdd = findViewById(R.id.add);
         DBHelper dbHelper = DBHelper.instanceOfDatabase(this);
-
+        checkForEditPlan();
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
-
         awesomeValidation.addValidation(this, R.id.judulAdd, RegexTemplate.NOT_EMPTY, R.string.invalid_judul);
         awesomeValidation.addValidation(this, R.id.deskripsiAdd, RegexTemplate.NOT_EMPTY, R.string.invalid_deskripsi);
         awesomeValidation.addValidation(this, R.id.waktuAdd, "[0-9]{2}:[0-9]{2}$", R.string.invalid_waktu);
@@ -64,17 +65,41 @@ public class AddActivity extends AppCompatActivity {
                 String judul = etJudul.getText().toString();
                 String waktu = etWaktu.getText().toString();
                 String deskripsi = etDeskripsi.getText().toString();
-                if (awesomeValidation.validate()){
-                    SourcePlanner sp = new SourcePlanner(judul, deskripsi, waktu, selectedDate);
-                    SourcePlanner.sourcePlannerArrayList.add(sp);
-                    dbHelper.insertPlan(sp);
-                    Toast.makeText(getApplicationContext(), "Your plan is successfully added.", Toast.LENGTH_SHORT).show();
-                    finish();
-                }else{
-                    Toast.makeText(getApplicationContext(), "Failed to add your plan", Toast.LENGTH_SHORT).show();
+                if (selectedPlan == null) {
+                    if (awesomeValidation.validate()) {
+                        SourcePlanner sp = new SourcePlanner(id, judul, deskripsi, waktu, selectedDate);
+                        SourcePlanner.sourcePlannerArrayList.add(sp);
+                        dbHelper.insertPlan(sp);
+                        Toast.makeText(getApplicationContext(), "Your plan is successfully added.", Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Failed to add your plan", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    if (awesomeValidation.validate()) {
+                        selectedPlan.setJudul(judul);
+                        selectedPlan.setTime(waktu);
+                        selectedPlan.setDeskripsi(deskripsi);
+                        dbHelper.updatePlanInDB(selectedPlan);
+                        Toast.makeText(getApplicationContext(), "Your plan has been updated", Toast.LENGTH_LONG).show();
+                        finish();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Failed to update your plan", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
+    }
+
+    private void checkForEditPlan() {
+        Intent previousIntent = getIntent();
+        int passedPlanID = previousIntent.getIntExtra(SourcePlanner.NOTE_EDIT_EXTRA, -1);
+        selectedPlan = SourcePlanner.getPlanForID(passedPlanID);
+        if (selectedPlan != null) {
+            etJudul.setText(selectedPlan.getJudul());
+            etDeskripsi.setText(selectedPlan.getDeskripsi());
+            etWaktu.setText(selectedPlan.getTime());
+        }
     }
 
     @Override

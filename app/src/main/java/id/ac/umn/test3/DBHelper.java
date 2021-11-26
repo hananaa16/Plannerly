@@ -23,7 +23,6 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String DESC_FIELD = "desc";
     private static final String DATE_FIELD = "date";
     private static final String TIME_FIELD = "time";
-    private static final DateFormat dateFormat = new SimpleDateFormat("d MMMM yyyy");
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -41,7 +40,7 @@ public class DBHelper extends SQLiteOpenHelper {
         StringBuilder sql;
         sql = new StringBuilder().append("CREATE TABLE ")
                 .append(TABLE_NAME).append("(").append(COUNTER).append(" INTEGER PRIMARY KEY AUTOINCREMENT, ")
-                .append(NAME_FIELD).append(" TEXT, ").append(DESC_FIELD).append(" TEXT, ")
+                .append(ID_FIELD).append(" INT, ").append(NAME_FIELD).append(" TEXT, ").append(DESC_FIELD).append(" TEXT, ")
                 .append(DATE_FIELD).append(" TEXT, ").append(TIME_FIELD).append(" TEXT)");
         DB.execSQL(sql.toString());
     }
@@ -59,6 +58,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void insertPlan(SourcePlanner sp) {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        contentValues.put(ID_FIELD, sp.getId());
         contentValues.put(NAME_FIELD, sp.getJudul());
         contentValues.put(DESC_FIELD, sp.getDeskripsi());
         contentValues.put(DATE_FIELD, String.valueOf(sp.getDate()));
@@ -71,12 +71,13 @@ public class DBHelper extends SQLiteOpenHelper {
         try (Cursor result = DB.rawQuery("SELECT * FROM " + TABLE_NAME, null)) {
             if (result.getCount() != 0) {
                 while (result.moveToNext()) {
-                    String name = result.getString(1);
-                    String desc = result.getString(2);
-                    String date = result.getString(3);
-                    String time = result.getString(4);
+                    int id = result.getInt(1);
+                    String name = result.getString(2);
+                    String desc = result.getString(3);
+                    String date = result.getString(4);
+                    String time = result.getString(5);
                     LocalDate date1 = getDateFromString(date);
-                    SourcePlanner sp = new SourcePlanner(name, desc, time, date1);
+                    SourcePlanner sp = new SourcePlanner(id, name, desc, time, date1);
                     SourcePlanner.sourcePlannerArrayList.add(sp);
                 }
             }
@@ -86,6 +87,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void updatePlanInDB(SourcePlanner sourcePlanner) {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        contentValues.put(ID_FIELD, sourcePlanner.getId());
         contentValues.put(NAME_FIELD, sourcePlanner.getJudul());
         contentValues.put(DESC_FIELD, sourcePlanner.getDeskripsi());
         contentValues.put(DATE_FIELD, String.valueOf(sourcePlanner.getDate()));

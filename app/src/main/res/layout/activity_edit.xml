@@ -30,13 +30,13 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/titleAdd"
+        android:id="@+id/titleEdit"
         android:layout_marginTop="50sp"
         android:layout_marginLeft="50sp"
         android:layout_marginRight="50sp"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:text="Add Your New Planner!"
+        android:text="Edit Your New Planner!"
         android:textSize="20sp"
         android:gravity="center"
         android:background="@drawable/title"
@@ -44,7 +44,7 @@
         android:backgroundTint="@color/hijau3"/>
 
     <ImageView
-        android:id="@+id/iconAdd"
+        android:id="@+id/iconEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="320dp"
@@ -58,7 +58,7 @@
         android:backgroundTint="@color/pink1"/>
 
     <TextView
-        android:id="@+id/iconAdd1"
+        android:id="@+id/iconEdit1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Icon"
@@ -70,7 +70,7 @@
         android:background="@drawable/outer"/>
 
     <EditText
-        android:id="@+id/judulAdd"
+        android:id="@+id/judulEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Judul"
@@ -82,7 +82,7 @@
         android:background="@drawable/outer"/>
 
     <EditText
-        android:id="@+id/deskripsiAdd"
+        android:id="@+id/deskripsiEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Deskripsi"
@@ -93,7 +93,7 @@
         android:background="@drawable/outer"/>
 
     <TextView
-        android:id="@+id/iconAdd2"
+        android:id="@+id/iconEdit2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Icon"
@@ -104,7 +104,7 @@
         android:background="@drawable/outer"/>
 
     <EditText
-        android:id="@+id/waktuAdd"
+        android:id="@+id/waktuEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="00:00"
@@ -116,7 +116,7 @@
         android:background="@drawable/outer"/>
 
     <TextView
-        android:id="@+id/iconAdd3"
+        android:id="@+id/iconEdit3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Icon"
@@ -127,7 +127,7 @@
         android:background="@drawable/outer"/>
 
     <EditText
-        android:id="@+id/fotoAdd"
+        android:id="@+id/fotoEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Foto"
@@ -139,7 +139,7 @@
         android:background="@drawable/outer"/>
 
     <TextView
-        android:id="@+id/mapsAdd"
+        android:id="@+id/mapsEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Maps"
@@ -150,7 +150,7 @@
         android:background="@drawable/outer"/>
 
     <EditText
-        android:id="@+id/gambarMapsAdd"
+        android:id="@+id/gambarMapsEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Gambar Maps"
@@ -161,14 +161,14 @@
         android:background="@drawable/outer"/>
 
     <Button
-        android:id="@+id/add"
+        android:id="@+id/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:padding="15dp"
         android:layout_marginLeft="150dp"
         android:layout_marginRight="150dp"
-        android:text="Add"
+        android:text="Save"
         android:textColor="@color/white"
         android:backgroundTint="@color/hijau1"/>
 

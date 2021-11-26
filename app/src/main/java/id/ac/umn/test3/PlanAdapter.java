@@ -1,6 +1,7 @@
 package id.ac.umn.test3;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,6 +46,16 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.ItemVideoViewH
         holder.btnDelete.setOnClickListener((view -> {
             deleteFile(position, view);
         }));
+        holder.btnEdit.setOnClickListener((view -> {
+            editPlan(position);
+        }));
+    }
+
+    private void editPlan(int position) {
+        SourcePlanner selectedPlan = mDaftarPlan.get(position);
+        Intent edit = new Intent(mContext, AddActivity.class);
+        edit.putExtra(SourcePlanner.NOTE_EDIT_EXTRA, selectedPlan.getId());
+        mContext.startActivity(edit);
     }
 
     public void deleteFile(int position, View v) {
@@ -68,6 +80,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.ItemVideoViewH
         private int mPosisi;
         private SourcePlanner mSumberPlan;
         private ImageButton btnDelete;
+        private ImageButton btnEdit;
 
         public ItemVideoViewHolder(View itemView) {
             super(itemView);
@@ -76,6 +89,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.ItemVideoViewH
             libraryDeskripsi = (TextView) itemView.findViewById(R.id.tvKetTask);
             libraryDate = (TextView) itemView.findViewById(R.id.tvTanggalTask);
             btnDelete = (ImageButton) itemView.findViewById(R.id.btnDeleteTask);
+            btnEdit = (ImageButton) itemView.findViewById(R.id.btnEditTask);
             itemView.setOnClickListener(this);
         }
 

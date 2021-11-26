@@ -27,7 +27,8 @@
             android:gravity="center"
             android:id="@+id/tvJudulTask"
             android:background="@drawable/roundedsquare"
-            android:backgroundTint="@color/teal_700"
+            android:backgroundTint="@color/pink1"
+            android:textColor="@color/white"
             android:text="Judul Task">
         </TextView>
 
@@ -79,7 +80,8 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="150sp"
-                        android:backgroundTint="@color/teal_700"
+                        android:backgroundTint="@color/biru3"
+                        android:onClick="editPlan"
                         android:src="@drawable/ic_baseline_edit_24" />
 
                     <ImageButton
@@ -87,8 +89,10 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5sp"
-                        android:backgroundTint="@color/red"
+                        android:onClick="deletePlan"
+                        android:backgroundTint="@color/pink2"
                         android:src="@drawable/ic_baseline_delete_24" />
+
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

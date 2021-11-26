@@ -37,127 +37,17 @@
         android:layout_marginTop="10dp"
         android:text="Weekly Calendar"
         android:textColor="@color/white"
+        android:backgroundTint="@color/biru2"
         android:background="@drawable/rounded_corners"
         android:textStyle="bold"
         android:onClick="dropdownAction"
         android:textSize="18sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp">
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableEnd="@drawable/ic_baseline_arrow_left_24"
-            android:textColor="@color/black"
-            android:background="@null"
-            android:textStyle="bold"
-            android:onClick="previousWeekAction"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/monthYearTV"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="wrap_content"
-            android:text="November 2021"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:textColor="@color/black"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableStart="@drawable/ic_baseline_arrow_right_24"
-            android:textColor="@color/black"
-            android:background="@null"
-            android:textStyle="bold"
-            android:onClick="nextWeekAction"
-            android:textSize="20sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="SUN"
-            android:textColor="@color/gray"
-            android:textAlignment="center"
-            android:textSize="16sp"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="MON"
-            android:textColor="@color/gray"
-            android:textAlignment="center"
-            android:textSize="16sp"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TUE"
-            android:textColor="@color/gray"
-            android:textAlignment="center"
-            android:textSize="16sp"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="WED"
-            android:textColor="@color/gray"
-            android:textAlignment="center"
-            android:textSize="16sp"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="THUR"
-            android:textColor="@color/gray"
-            android:textAlignment="center"
-            android:textSize="16sp"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="FRI"
-            android:textColor="@color/gray"
-            android:textAlignment="center"
-            android:textSize="16sp"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="SAT"
-            android:textColor="@color/gray"
-            android:textAlignment="center"
-            android:textSize="16sp"/>
-
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/calendarRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--        android:id="@+id/calendarRecyclerView"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_weight="1"/>-->
 
     <ListView
         android:id="@+id/eventListView"

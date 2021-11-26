@@ -1,10 +1,14 @@
 package id.ac.umn.test3;
 
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class SourcePlanner {
     public static ArrayList<SourcePlanner> sourcePlannerArrayList = new ArrayList<>();
+    public static String NOTE_EDIT_EXTRA = "noteEdit";
     private int id;
     private String judul;
     private String deskripsi;
@@ -20,18 +24,37 @@ public class SourcePlanner {
         return sourcePlanners;
     }
 
-    public SourcePlanner(String judul, String deskripsi, String time, LocalDate date){
+    public SourcePlanner(Integer id, String judul, String deskripsi, String time, LocalDate date){
+        this.id = id;
         this.judul = judul;
         this.deskripsi = deskripsi;
         this.time = time;
         this.date = date;
     }
 
-    public SourcePlanner(String judul, String deskripsi, String time){
+    public SourcePlanner(Integer id, String judul, String deskripsi, String time){
+        this.id = id;
         this.judul = judul;
         this.deskripsi = deskripsi;
         this.time = time;
         date = CalendarUtils.selectedDate;
+    }
+
+    public static SourcePlanner getPlanForID(int passedPlanID) {
+        for (SourcePlanner plan: sourcePlannerArrayList) {
+            if (plan.getId() == passedPlanID)
+                return plan;
+        }
+        return null;
+    }
+
+    public static ArrayList<SourcePlanner> nonDeletedPlans() {
+        ArrayList<SourcePlanner> nonDeleted = new ArrayList<>();
+        for (SourcePlanner plan : sourcePlannerArrayList) {
+            if (plan.getDate() == null)
+                nonDeleted.add(plan);
+        }
+        return nonDeleted;
     }
 
     public String getJudul() {

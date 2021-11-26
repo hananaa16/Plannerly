@@ -14,8 +14,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
@@ -80,8 +83,8 @@ public class DailyCalendarActivity extends AppCompatActivity {
     }
 
     private void isiDaftarMusik() {
-        dailyEvents.add(new SourcePlanner("Rapat BPH Koor", "PPT", "12:00"));
-        dailyEvents.add(new SourcePlanner("Tugas Akhir", "Makalah", "14:00"));
+        dailyEvents.add(new SourcePlanner(1, "Rapat BPH Koor", "PPT", "12:00"));
+        dailyEvents.add(new SourcePlanner(2, "Tugas Akhir", "Makalah", "14:00"));
     }
 
     public void previousDayAction(View view) {
@@ -103,6 +106,8 @@ public class DailyCalendarActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
