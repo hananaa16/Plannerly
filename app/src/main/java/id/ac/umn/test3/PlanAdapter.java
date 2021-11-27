@@ -62,9 +62,8 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.ItemVideoViewH
         DBHelper dbHelper = DBHelper.instanceOfDatabase(mContext);
         dbHelper.deletePlanInDB(mDaftarPlan.get(position));
         mDaftarPlan.remove(position);
-        Toast.makeText(v.getContext(), "Plan telah dihapus! ", Toast.LENGTH_LONG).show();
+        Toast.makeText(v.getContext(), "Plan has successfully been deleted!", Toast.LENGTH_LONG).show();
         notifyItemChanged(position);
-//        notifyItemRangeChanged(position, mDaftarPlan.size());
     }
 
     @Override

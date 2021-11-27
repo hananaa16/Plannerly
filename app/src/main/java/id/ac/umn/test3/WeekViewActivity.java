@@ -46,7 +46,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     private void initWidgets() {
         calendarRecyclerView = findViewById(R.id.calendarRecyclerView);
         monthYearText = findViewById(R.id.monthYearTV);
-        eventListView = findViewById(R.id.eventListView);
+        eventListView = findViewById(R.id.weeklyRecyclerView);
         picker = findViewById(R.id.picker);
     }
 
@@ -107,14 +107,6 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         ArrayList<Event> dailyEvents = Event.eventsForDate(CalendarUtils.selectedDate);
         EventAdapter eventAdapter = new EventAdapter(getApplicationContext(), dailyEvents);
         eventListView.setAdapter(eventAdapter);
-    }
-
-    public void newEventAction(View view) {
-        startActivity(new Intent(this, EventEditActivity.class));
-    }
-
-    public void dailyAction(View view) {
-        startActivity(new Intent(this, DailyCalendarActivity.class));
     }
 
     @Override

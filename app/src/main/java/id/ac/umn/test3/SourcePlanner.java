@@ -14,6 +14,7 @@ public class SourcePlanner {
     private String deskripsi;
     private String time;
     private LocalDate date;
+    private String address;
 
     public static ArrayList<SourcePlanner> eventsForDate(LocalDate date) {
         ArrayList<SourcePlanner> sourcePlanners = new ArrayList<>();
@@ -24,12 +25,22 @@ public class SourcePlanner {
         return sourcePlanners;
     }
 
+    public SourcePlanner(Integer id, String judul, String deskripsi, String time, String address, LocalDate date){
+        this.id = id;
+        this.judul = judul;
+        this.deskripsi = deskripsi;
+        this.time = time;
+        this.date = date;
+        this.address = address;
+    }
+
     public SourcePlanner(Integer id, String judul, String deskripsi, String time, LocalDate date){
         this.id = id;
         this.judul = judul;
         this.deskripsi = deskripsi;
         this.time = time;
         this.date = date;
+        address = "";
     }
 
     public SourcePlanner(Integer id, String judul, String deskripsi, String time){
@@ -37,6 +48,7 @@ public class SourcePlanner {
         this.judul = judul;
         this.deskripsi = deskripsi;
         this.time = time;
+        address = "";
         date = CalendarUtils.selectedDate;
     }
 
@@ -71,6 +83,12 @@ public class SourcePlanner {
     }
     public LocalDate getDate() {
         return date;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
     }
     public void setDate(LocalDate date) {
         this.date = date;

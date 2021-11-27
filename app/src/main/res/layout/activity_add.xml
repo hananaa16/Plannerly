@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AddActivity">
+    tools:context=".AddActivity"
+    android:background="@drawable/bg4">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -73,7 +74,7 @@
         android:id="@+id/judulAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Judul"
+        android:hint="Title"
         android:gravity="center"
         android:layout_marginTop="-50dp"
         android:layout_marginLeft="110sp"
@@ -85,7 +86,7 @@
         android:id="@+id/deskripsiAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Deskripsi"
+        android:hint="Description"
         android:gravity="center"
         android:layout_marginLeft="50sp"
         android:height="100sp"
@@ -107,7 +108,7 @@
         android:id="@+id/waktuAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="00:00"
+        android:hint="00:00 (24h Format)"
         android:gravity="center"
         android:layout_marginTop="-50dp"
         android:layout_marginLeft="110sp"
@@ -130,7 +131,7 @@
         android:id="@+id/fotoAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Foto"
+        android:hint="Image"
         android:gravity="center"
         android:layout_marginTop="-50dp"
         android:layout_marginLeft="110sp"
@@ -142,23 +143,23 @@
         android:id="@+id/mapsAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Maps"
-        android:gravity="center"
         android:layout_marginLeft="50sp"
-        android:height="35sp"
         android:layout_marginRight="50sp"
-        android:background="@drawable/outer"/>
+        android:height="35sp"
+        android:background="@drawable/outer"
+        android:gravity="center"
+        android:text="Address" />
 
     <EditText
-        android:id="@+id/gambarMapsAdd"
+        android:id="@+id/addressDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Gambar Maps"
-        android:gravity="center"
         android:layout_marginLeft="50sp"
-        android:height="100sp"
         android:layout_marginRight="50sp"
-        android:background="@drawable/outer"/>
+        android:height="100sp"
+        android:background="@drawable/outer"
+        android:gravity="center"
+        android:hint="Address Description" />
 
     <Button
         android:id="@+id/add"

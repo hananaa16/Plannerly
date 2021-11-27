@@ -23,6 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String DESC_FIELD = "desc";
     private static final String DATE_FIELD = "date";
     private static final String TIME_FIELD = "time";
+    private static final String ADDRESS_FIELD = "address";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -63,6 +64,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(DESC_FIELD, sp.getDeskripsi());
         contentValues.put(DATE_FIELD, String.valueOf(sp.getDate()));
         contentValues.put(TIME_FIELD, sp.getTime());
+//        contentValues.put(ADDRESS_FIELD, sp.getAddress());
         DB.insert(TABLE_NAME, null, contentValues);
     }
 
@@ -76,6 +78,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     String desc = result.getString(3);
                     String date = result.getString(4);
                     String time = result.getString(5);
+//                    String address = result.getString(6);
                     LocalDate date1 = getDateFromString(date);
                     SourcePlanner sp = new SourcePlanner(id, name, desc, time, date1);
                     SourcePlanner.sourcePlannerArrayList.add(sp);
@@ -92,6 +95,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(DESC_FIELD, sourcePlanner.getDeskripsi());
         contentValues.put(DATE_FIELD, String.valueOf(sourcePlanner.getDate()));
         contentValues.put(TIME_FIELD, sourcePlanner.getTime());
+//        contentValues.put(ADDRESS_FIELD, sourcePlanner.getAddress());
         DB.update(TABLE_NAME, contentValues, ID_FIELD + " =? ", new String[] {String.valueOf(sourcePlanner.getId())});
     }
 

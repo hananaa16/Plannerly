@@ -21,6 +21,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Predicate;
 
 import id.ac.umn.test3.databinding.ActivityDailyCalendarBinding;
 
@@ -28,14 +29,12 @@ public class DailyCalendarActivity extends AppCompatActivity {
     private TextView monthDayText;
     private TextView dayOfWeekTV;
     RecyclerView planListView;
-    ArrayList<SourcePlanner> dailyEvents = new ArrayList<>();
+    ArrayList<SourcePlanner> dailyEvents = SourcePlanner.sourcePlannerArrayList;
     private ActivityDailyCalendarBinding binding;
-    private static final int REQUEST_TAMBAH = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        isiDaftarMusik();
         binding = ActivityDailyCalendarBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
@@ -47,6 +46,7 @@ public class DailyCalendarActivity extends AppCompatActivity {
                 startActivity(new Intent(DailyCalendarActivity.this, AddActivity.class));
             }
         });
+        isiDaftarMusik();
         initWidgets();
         loadFromDBToMemory();
     }
@@ -59,6 +59,8 @@ public class DailyCalendarActivity extends AppCompatActivity {
     }
 
     private void setPlanAdapter() {
+        Predicate<SourcePlanner> condition = dailyEvent -> !dailyEvent.getDate().equals(selectedDate);
+        dailyEvents.removeIf(condition);
         PlanAdapter planAdapter = new PlanAdapter(this, dailyEvents);
         planListView.setAdapter(planAdapter);
         planListView.setLayoutManager(new LinearLayoutManager(this));
@@ -72,6 +74,8 @@ public class DailyCalendarActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        dailyEvents.clear();
+        loadFromDBToMemory();
         setDayView();
     }
 
@@ -83,22 +87,8 @@ public class DailyCalendarActivity extends AppCompatActivity {
     }
 
     private void isiDaftarMusik() {
-        dailyEvents.add(new SourcePlanner(1, "Rapat BPH Koor", "PPT", "12:00"));
-        dailyEvents.add(new SourcePlanner(2, "Tugas Akhir", "Makalah", "14:00"));
-    }
-
-    public void previousDayAction(View view) {
-        CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusDays(1);
-        setDayView();
-    }
-
-    public void nextDayAction(View view) {
-        CalendarUtils.selectedDate = CalendarUtils.selectedDate.plusDays(1);
-        setDayView();
-    }
-
-    public void newEventAction(View view) {
-        startActivity(new Intent(this, EventEditActivity.class));
+        dailyEvents.add(new SourcePlanner(1, "Rapat BPH Koor", "PPT", "12:00", "", LocalDate.of(2021, 11, 27)));
+        dailyEvents.add(new SourcePlanner(2, "Tugas Akhir", "Makalah", "14:00", "", LocalDate.now()));
     }
 
     @Override
@@ -106,8 +96,6 @@ public class DailyCalendarActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

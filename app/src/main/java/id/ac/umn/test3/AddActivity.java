@@ -18,6 +18,7 @@ import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import id.ac.umn.test3.databinding.ActivityAddBinding;
@@ -27,10 +28,9 @@ public class AddActivity extends AppCompatActivity {
     EditText etDeskripsi;
     EditText etWaktu;
     EditText etFoto;
-    EditText etMaps;
+    EditText etAddress;
     Button btnAdd;
-    PlanAdapter adapter;
-    LinkedList<SourcePlanner> daftarMusik= new LinkedList<>();
+    ArrayList<SourcePlanner> daftarPlan= new ArrayList<>();
     private SourcePlanner selectedPlan;
     private ActivityAddBinding binding;
     AwesomeValidation awesomeValidation;
@@ -49,7 +49,7 @@ public class AddActivity extends AppCompatActivity {
         etDeskripsi = findViewById(R.id.deskripsiAdd);
         etWaktu = findViewById(R.id.waktuAdd);
         etFoto = findViewById(R.id.fotoAdd);
-        etMaps = findViewById(R.id.gambarMapsAdd);
+        etAddress = findViewById(R.id.addressDesc);
         btnAdd = findViewById(R.id.add);
         DBHelper dbHelper = DBHelper.instanceOfDatabase(this);
         checkForEditPlan();
@@ -61,10 +61,11 @@ public class AddActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int id = daftarMusik.size();
+                int id = daftarPlan.size();
                 String judul = etJudul.getText().toString();
                 String waktu = etWaktu.getText().toString();
                 String deskripsi = etDeskripsi.getText().toString();
+                String address = etAddress.getText().toString();
                 if (selectedPlan == null) {
                     if (awesomeValidation.validate()) {
                         SourcePlanner sp = new SourcePlanner(id, judul, deskripsi, waktu, selectedDate);
