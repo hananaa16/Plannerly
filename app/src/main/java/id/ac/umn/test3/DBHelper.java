@@ -24,6 +24,8 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String DATE_FIELD = "date";
     private static final String TIME_FIELD = "time";
     private static final String ADDRESS_FIELD = "address";
+    private static final String KEY_NAME = "image_name";
+    private static final String KEY_IMAGE = "image_data";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);

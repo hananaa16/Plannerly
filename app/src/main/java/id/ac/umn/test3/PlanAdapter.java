@@ -76,8 +76,6 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.ItemVideoViewH
         private TextView libraryDeskripsi;
         private TextView libraryTime;
         private TextView libraryDate;
-        private int mPosisi;
-        private SourcePlanner mSumberPlan;
         private ImageButton btnDelete;
         private ImageButton btnEdit;
 

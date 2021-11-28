@@ -15,7 +15,6 @@ public class Event {
         for (Event event : eventsList) {
             if (event.getDate().equals(date))
                 events.add(event);
-
         }
         return events;
     }

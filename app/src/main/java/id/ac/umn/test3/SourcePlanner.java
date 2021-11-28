@@ -25,7 +25,7 @@ public class SourcePlanner {
         return sourcePlanners;
     }
 
-    public SourcePlanner(Integer id, String judul, String deskripsi, String time, String address, LocalDate date){
+    public SourcePlanner(Integer id, String judul, String deskripsi, String time, LocalDate date, String address){
         this.id = id;
         this.judul = judul;
         this.deskripsi = deskripsi;
@@ -48,8 +48,8 @@ public class SourcePlanner {
         this.judul = judul;
         this.deskripsi = deskripsi;
         this.time = time;
-        address = "";
         date = CalendarUtils.selectedDate;
+        address = "";
     }
 
     public static SourcePlanner getPlanForID(int passedPlanID) {

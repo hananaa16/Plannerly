@@ -46,7 +46,6 @@ public class DailyCalendarActivity extends AppCompatActivity {
                 startActivity(new Intent(DailyCalendarActivity.this, AddActivity.class));
             }
         });
-        isiDaftarMusik();
         initWidgets();
         loadFromDBToMemory();
     }
@@ -86,11 +85,6 @@ public class DailyCalendarActivity extends AppCompatActivity {
         setPlanAdapter();
     }
 
-    private void isiDaftarMusik() {
-        dailyEvents.add(new SourcePlanner(1, "Rapat BPH Koor", "PPT", "12:00", "", LocalDate.of(2021, 11, 27)));
-        dailyEvents.add(new SourcePlanner(2, "Tugas Akhir", "Makalah", "14:00", "", LocalDate.now()));
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -103,7 +97,7 @@ public class DailyCalendarActivity extends AppCompatActivity {
             case android.R.id.home:
                 this.finish();
                 return true;
-            case R.id.action_settings:
+            case R.id.action_logout:
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -57,7 +57,7 @@
                         android:textStyle="bold"></TextView>
 
                     <TextView
-                        android:id="@+id/tvKetTask"
+                        android:id="@+id/tvWaktuTask"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Waktu"></TextView>

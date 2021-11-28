@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -24,6 +25,7 @@ import java.util.LinkedList;
 import id.ac.umn.test3.databinding.ActivityAddBinding;
 
 public class AddActivity extends AppCompatActivity {
+    TextView title;
     EditText etJudul;
     EditText etDeskripsi;
     EditText etWaktu;
@@ -45,6 +47,7 @@ public class AddActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle(CalendarUtils.monthDayFromDate(selectedDate));
 
+        title = (TextView) findViewById(R.id.titleAdd);
         etJudul = findViewById(R.id.judulAdd);
         etDeskripsi = findViewById(R.id.deskripsiAdd);
         etWaktu = findViewById(R.id.waktuAdd);
@@ -61,11 +64,12 @@ public class AddActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                title.setText("Add Your New Planner!");
                 int id = daftarPlan.size();
                 String judul = etJudul.getText().toString();
                 String waktu = etWaktu.getText().toString();
                 String deskripsi = etDeskripsi.getText().toString();
-                String address = etAddress.getText().toString();
+                String address = etAddress.getText().toString().trim();
                 if (selectedPlan == null) {
                     if (awesomeValidation.validate()) {
                         SourcePlanner sp = new SourcePlanner(id, judul, deskripsi, waktu, selectedDate);
@@ -81,6 +85,7 @@ public class AddActivity extends AppCompatActivity {
                         selectedPlan.setJudul(judul);
                         selectedPlan.setTime(waktu);
                         selectedPlan.setDeskripsi(deskripsi);
+                        selectedPlan.setAddress(address);
                         dbHelper.updatePlanInDB(selectedPlan);
                         Toast.makeText(getApplicationContext(), "Your plan has been updated", Toast.LENGTH_LONG).show();
                         finish();
@@ -97,9 +102,12 @@ public class AddActivity extends AppCompatActivity {
         int passedPlanID = previousIntent.getIntExtra(SourcePlanner.NOTE_EDIT_EXTRA, -1);
         selectedPlan = SourcePlanner.getPlanForID(passedPlanID);
         if (selectedPlan != null) {
+            title.setText("Edit Your Planner!");
             etJudul.setText(selectedPlan.getJudul());
             etDeskripsi.setText(selectedPlan.getDeskripsi());
             etWaktu.setText(selectedPlan.getTime());
+            etAddress.setText(selectedPlan.getAddress());
+            btnAdd.setText("SAVE");
         }
     }
 
