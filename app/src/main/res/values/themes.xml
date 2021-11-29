@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Test3" parent="Theme.AppCompat.Light.NoActionBar">
+
+    </style>
+
+    <style name="Theme.Test3.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Test.AppBarOverlay" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/greenish</item>
+    </style>
+
+    <style name="Theme.Test.PopupOverlay" parent="Theme.AppCompat.Light" />
+</resources>
