@@ -2,9 +2,18 @@ package id.ac.umn.trialtodolist;
 
 public class Model {
 
-    private String task, description, id, date;
+    private String task, description, id, date, imageURL;
 
     public Model() {
+    }
+
+    public Model(String task, String description, String id, String date, String imageURL) {
+        this.task = task;
+        this.description = description;
+        this.id = id;
+        this.date = date;
+        this.imageURL= imageURL;
+
     }
 
     public Model(String task, String description, String id, String date) {
@@ -12,6 +21,7 @@ public class Model {
         this.description = description;
         this.id = id;
         this.date = date;
+
     }
 
     public String getTask() {
@@ -44,5 +54,13 @@ public class Model {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public String getImageURL() {
+        return imageURL;
     }
 }

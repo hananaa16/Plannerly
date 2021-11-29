@@ -1,6 +1,7 @@
 package id.ac.umn.trialtodolist;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,8 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -19,8 +25,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,18 +36,25 @@ import android.widget.Toast;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.util.Date;
 
 public class HomeActivity extends AppCompatActivity {
-
+    private static final int PICK_IMAGE_REQUEST =1;
     private Toolbar toolbar;
     private RecyclerView recyclerView;
     private FloatingActionButton floatingActionButton;
@@ -54,6 +69,15 @@ public class HomeActivity extends AppCompatActivity {
     private String key = "";
     private String task;
     private String description;
+    private Uri mImageUri;
+
+    private Button save,image,cancel;
+    private ImageView chosenImageView;
+    private ImageView editImageView;
+    private Button editImage;
+    private StorageReference mStorageRef;
+    private DatabaseReference mDatabaseRef;
+    private StorageTask mUploadTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +114,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void addTask() {
+
         AlertDialog.Builder myDialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = LayoutInflater.from(this);
 
@@ -101,13 +126,24 @@ public class HomeActivity extends AppCompatActivity {
 
         final EditText task = myView.findViewById(R.id.task);
         final EditText description = myView.findViewById(R.id.description);
-        Button save = myView.findViewById(R.id.saveBtn);
-        Button cancel = myView.findViewById(R.id.CancelBtn);
+        save = myView.findViewById(R.id.saveBtn);
+        cancel = myView.findViewById(R.id.CancelBtn);
+        image = myView.findViewById(R.id.button_chosen_image);
+        chosenImageView= myView.findViewById(R.id.chosenImageView);
+        mStorageRef = FirebaseStorage.getInstance().getReference("image_uploads");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("image_uploads");
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+            }
+        });
+
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFileChooser();
             }
         });
 
@@ -118,7 +154,6 @@ public class HomeActivity extends AppCompatActivity {
                 String mDescription = description.getText().toString().trim();
                 String id = reference.push().getKey();
                 String date = DateFormat.getDateInstance().format(new Date());
-
 
                 if (TextUtils.isEmpty(mTask)) {
                     task.setError("Task Required");
@@ -132,21 +167,52 @@ public class HomeActivity extends AppCompatActivity {
                     loader.setCanceledOnTouchOutside(false);
                     loader.show();
 
-                    Model model = new Model(mTask, mDescription, id, date);
-                    reference.child(id).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(HomeActivity.this, "Task has been inserted successfully", Toast.LENGTH_SHORT).show();
-                                loader.dismiss();
-                            } else {
-                                String error = task.getException().toString();
-                                Toast.makeText(HomeActivity.this, "Failed: " + error, Toast.LENGTH_SHORT).show();
-                                loader.dismiss();
-                            }
-                        }
-                    });
+                    if (mImageUri != null) {
+                        StorageReference fileReference = mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(mImageUri));
+                        mUploadTask = fileReference.putFile(mImageUri)
+                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Uri> task) {
+                                        Model model = new Model(mTask, mDescription, id, date, String.valueOf(task.getResult()));
+                                        reference.child(id).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if(task.isSuccessful()) {
+                                                    Toast.makeText(HomeActivity.this, "Task has been inserted successfully", Toast.LENGTH_SHORT).show();
+                                                    loader.dismiss();
+                                                } else {
+                                                    String error = task.getException().toString();
+                                                    Toast.makeText(HomeActivity.this, "Failed: " + error, Toast.LENGTH_SHORT).show();
+                                                    loader.dismiss();
+                                                }
+                                            }
+                                        });
 
+                                    }
+                                });
+
+                            }
+                        });
+                    } else {
+                        Model model = new Model(mTask, mDescription, id, date);
+                        reference.child(id).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(HomeActivity.this, "Task has been inserted successfully", Toast.LENGTH_SHORT).show();
+                                    loader.dismiss();
+                                } else {
+                                    String error = task.getException().toString();
+                                    Toast.makeText(HomeActivity.this, "Failed: " + error, Toast.LENGTH_SHORT).show();
+                                    loader.dismiss();
+                                }
+                            }
+                        });
+
+                    }
                 }
 
                 dialog.dismiss();
@@ -163,13 +229,21 @@ public class HomeActivity extends AppCompatActivity {
         FirebaseRecyclerOptions<Model> options = new FirebaseRecyclerOptions.Builder<Model>()
                 .setQuery(reference, Model.class)
                 .build();
-
+        Context context;
+        context = this;
         FirebaseRecyclerAdapter<Model, MyViewHolder> adapter = new FirebaseRecyclerAdapter<Model, MyViewHolder>(options) {
+
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") final int position, @NonNull final Model model) {
                 holder.setDate(model.getDate());
                 holder.setTask(model.getTask());
                 holder.setDesc(model.getDescription());
+
+                Picasso.with(context)
+                        .load(model.getImageURL())
+                        .fit()
+                        .centerCrop()
+                        .into(holder.imageView);
 
                 holder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -181,7 +255,6 @@ public class HomeActivity extends AppCompatActivity {
                         updateTask();
                     }
                 });
-
 
             }
 
@@ -199,10 +272,12 @@ public class HomeActivity extends AppCompatActivity {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         View mView;
+        ImageView imageView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             mView = itemView;
+            imageView = itemView.findViewById(R.id.imageIv);
         }
 
         public void setTask(String task) {
@@ -218,6 +293,7 @@ public class HomeActivity extends AppCompatActivity {
         public void setDate(String date) {
             TextView dateTextView = mView.findViewById(R.id.dateTv);
         }
+
     }
 
     private void updateTask() {
@@ -230,12 +306,18 @@ public class HomeActivity extends AppCompatActivity {
 
         final EditText mTask = view.findViewById(R.id.mEditTextTask);
         final EditText mDescription = view.findViewById(R.id.mEditTextDescription);
+//        editImage = view.findViewById(R.id.button_edit_image);
+//        editImageView = view.findViewById(R.id.editImageView);
+//        mStorageRef = FirebaseStorage.getInstance().getReference("image_uploads");
+//        mDatabaseRef = FirebaseDatabase.getInstance().getReference("image_uploads");
 
         mTask.setText(task);
         mTask.setSelection(task.length());
 
         mDescription.setText(description);
         mDescription.setSelection(description.length());
+
+
 
         Button delButton = view.findViewById(R.id.btnDelete);
         Button updateButton = view.findViewById(R.id.btnUpdate);
@@ -308,4 +390,61 @@ public class HomeActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void openFileChooser(){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent,PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode==RESULT_OK && data !=null && data.getData() !=null){
+            mImageUri = data.getData();
+            Picasso.with(this).load(mImageUri).into(chosenImageView);
+        }
+    }
+
+    private String getFileExtension(Uri uri){
+        ContentResolver cR = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
+    }
+
+
+
+//    private void uploadFile(){
+//        if(mImageUri!=null) {
+//            StorageReference fileReference = mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(mImageUri));
+//            mUploadTask = fileReference.putFile(mImageUri)
+//                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                            Handler handler = new Handler();
+//                            handler.postDelayed(new Runnable() {
+//                                @Override
+//                                public void run() {
+//
+//                                }
+//                            }, 500);
+//                            Toast.makeText(HomeActivity.this, "Image Uploaded", Toast.LENGTH_SHORT);
+//
+////                            taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
+//
+//                        }
+//                    })
+//                    .addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//                            Toast.makeText(HomeActivity.this, "Failed", Toast.LENGTH_SHORT);
+//
+//                        }
+//                    });
+//
+//        }else{
+//            Toast.makeText(HomeActivity.this, "U Haven't selected", Toast.LENGTH_SHORT);
+//        }
+//    }
 }

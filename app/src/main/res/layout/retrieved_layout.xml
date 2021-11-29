@@ -61,6 +61,30 @@
                 android:maxLines="3"/>
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/imageTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Image"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:maxLines="1"
+                android:textColor="#000"/>
+
+            <ImageView
+                android:src="@drawable/myimage"
+                android:id="@+id/imageIv"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"></ImageView>
+
+        </LinearLayout>
 
     </LinearLayout>
 
