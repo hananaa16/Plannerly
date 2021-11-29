@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -101,14 +103,15 @@ public class MonthlyView extends AppCompatActivity implements CalendarAdapter.On
         int id = item.getItemId();
 
         if (id == R.id.action_logout) {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(MonthlyView.this, LoginUser.class));
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         finishAffinity();
         System.exit(0);
     }

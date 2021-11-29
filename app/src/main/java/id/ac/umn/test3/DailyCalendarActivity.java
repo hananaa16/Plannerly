@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
@@ -98,6 +100,8 @@ public class DailyCalendarActivity extends AppCompatActivity {
                 this.finish();
                 return true;
             case R.id.action_logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(DailyCalendarActivity.this, LoginUser.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

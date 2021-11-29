@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -121,6 +122,8 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
                 this.finish();
                 return true;
             case R.id.action_logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(WeekViewActivity.this, LoginUser.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

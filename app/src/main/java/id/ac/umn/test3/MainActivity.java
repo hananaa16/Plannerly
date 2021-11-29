@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, MonthlyView.class));
+                startActivity(new Intent(MainActivity.this, LoginUser.class));
             }
         });
     }
