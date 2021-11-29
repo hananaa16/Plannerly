@@ -60,11 +60,10 @@
 
     <ImageView
         android:id="@+id/iconAdd1"
-        android:layout_width="60dp"
-        android:layout_height="50dp"
+        android:layout_width="68dp"
+        android:layout_height="55dp"
         android:layout_marginLeft="50sp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="300sp"
+        android:layout_marginTop="30dp"
         android:height="50dp"
         android:background="@drawable/outer"
         android:padding="5dp"
@@ -75,7 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="110sp"
-        android:layout_marginTop="-50dp"
+        android:layout_marginTop="-55dp"
         android:layout_marginRight="50sp"
         android:height="50sp"
         android:background="@drawable/outer"
@@ -95,8 +94,8 @@
 
     <ImageView
         android:id="@+id/iconAdd2"
-        android:layout_width="60dp"
-        android:layout_height="50dp"
+        android:layout_width="68dp"
+        android:layout_height="54dp"
         android:layout_marginLeft="50sp"
         android:layout_marginTop="0dp"
         android:layout_marginRight="300sp"
@@ -110,7 +109,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="110sp"
-        android:layout_marginTop="-50dp"
+        android:layout_marginTop="-54dp"
         android:layout_marginRight="50sp"
         android:height="50sp"
         android:background="@drawable/outer"
@@ -119,53 +118,39 @@
 
     <ImageView
         android:id="@+id/iconAdd3"
-        android:layout_width="60dp"
-        android:layout_height="103dp"
+        android:layout_width="67dp"
+        android:layout_height="100dp"
         android:layout_marginLeft="50sp"
-        android:layout_marginTop="-5dp"
-        android:layout_marginRight="300sp"
+        android:layout_marginTop="-2dp"
         android:height="50sp"
         android:background="@drawable/outer"
         android:padding="5dp"
         android:src="@drawable/ic_baseline_image_search_24" />
-
-
-    <ImageView
-        android:id="@+id/pickImage2"
-        android:layout_width="252dp"
-        android:layout_height="97dp"
-        android:layout_marginLeft="110sp"
-        android:layout_marginTop="-97dp"
-        android:layout_marginRight="50sp"
-        android:height="50sp"
-        android:gravity="center"
-        android:src="@drawable/outerimage" />
 
     <ImageView
         android:id="@+id/pickImage"
         android:layout_width="match_parent"
         android:layout_height="97dp"
         android:layout_marginLeft="110sp"
-        android:layout_marginTop="-97dp"
+        android:layout_marginTop="-99dp"
         android:layout_marginRight="50sp"
-        android:height="50sp"
         android:gravity="center"
         android:src="@drawable/outerimage" />
 
     <TextView
         android:id="@+id/location"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="35sp"
         android:layout_marginLeft="50sp"
         android:layout_marginRight="50sp"
-        android:height="35sp"
         android:background="@drawable/outer"
         android:gravity="center"
+        android:textColor="@color/black"
         android:text="Location" />
 
     <EditText
         android:id="@+id/addressDesc"
-        android:layout_width="312dp"
+        android:layout_width="match_parent"
         android:layout_height="78dp"
         android:layout_marginLeft="50sp"
         android:layout_marginRight="50sp"
