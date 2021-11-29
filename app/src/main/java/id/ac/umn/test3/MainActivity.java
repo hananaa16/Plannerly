@@ -29,7 +29,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    public void simpanData(View view) {
-    }
 }

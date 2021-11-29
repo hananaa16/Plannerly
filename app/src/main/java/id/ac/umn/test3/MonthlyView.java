@@ -101,7 +101,6 @@ public class MonthlyView extends AppCompatActivity implements CalendarAdapter.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         if (id == R.id.action_logout) {
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(MonthlyView.this, LoginUser.class));
@@ -111,8 +110,8 @@ public class MonthlyView extends AppCompatActivity implements CalendarAdapter.On
     }
 
     @Override
-    public void onBackPressed() {
-        finishAffinity();
+    public void onBackPressed(){
+        FirebaseAuth.getInstance().signOut();
         System.exit(0);
     }
 }

@@ -3,6 +3,7 @@ package id.ac.umn.test3;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,18 +21,26 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import id.ac.umn.test3.databinding.ActivityRegisterUserBinding;
+
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener {
 
     private TextView banner, registerUser;
     private EditText editTextFullName, editTextEmail, editTextPassword;
     private ProgressBar progressBar;
+    private ActivityRegisterUserBinding binding;
 
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_user);
+        binding = ActivityRegisterUserBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        setSupportActionBar(binding.toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("Register New User");
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -95,34 +105,42 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         }
 
         progressBar.setVisibility(View.VISIBLE);
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        if(task.isSuccessful()) {
-                            User user = new User(fullName, email);
+                if(task.isSuccessful()) {
+                    User user = new User(fullName, email);
 
-                            FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(RegisterUser.this, "Registered successfully.", Toast.LENGTH_LONG).show();
-                                        progressBar.setVisibility(View.GONE);
-                                    } else {
-                                        Toast.makeText(RegisterUser.this, "Failed to register. Please try again.", Toast.LENGTH_LONG).show();
-                                        progressBar.setVisibility(View.GONE);
-                                    }
-                                }
-                            });
-                        }else{
-                            Toast.makeText(RegisterUser.this, "Failed to register.", Toast.LENGTH_LONG).show();
-                            progressBar.setVisibility(View.GONE);
+                    FirebaseDatabase.getInstance().getReference("Users")
+                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(RegisterUser.this, "Registered successfully.", Toast.LENGTH_LONG).show();
+                                progressBar.setVisibility(View.GONE);
+                            } else {
+                                Toast.makeText(RegisterUser.this, "Failed to register. Please try again.", Toast.LENGTH_LONG).show();
+                                progressBar.setVisibility(View.GONE);
+                            }
                         }
-                    }
-                });
+                    });
+                }else{
+                    Toast.makeText(RegisterUser.this, "Failed to register.", Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.GONE);
+                }
+            }
+        });
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

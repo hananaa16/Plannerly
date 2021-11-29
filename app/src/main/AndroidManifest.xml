@@ -15,29 +15,37 @@
             android:name=".MonthlyView"
             android:exported="true"
             android:label="Monthly Calendar"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Test3.NoActionBar" />
         <activity
             android:name=".DailyCalendarActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:label="Daily Calendar" />
         <activity
             android:name=".WeekViewActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:label="Weekly Calendar" />
         <activity
             android:name=".AddActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ForgotPassword"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".RegisterUser"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".LoginUser"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

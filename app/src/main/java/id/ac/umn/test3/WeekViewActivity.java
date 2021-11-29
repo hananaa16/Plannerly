@@ -132,7 +132,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
 
     @Override
     public void onBackPressed(){
-        finishAffinity();
+        FirebaseAuth.getInstance().signOut();
         System.exit(0);
     }
 }

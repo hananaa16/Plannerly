@@ -2,6 +2,7 @@ package id.ac.umn.test3;
 
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,24 +10,33 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
+import id.ac.umn.test3.databinding.ActivityForgotPasswordBinding;
+
 public class ForgotPassword extends AppCompatActivity {
 
     private EditText emailEditText;
     private Button resetPasswordButton;
     private ProgressBar progressBar;
+    private ActivityForgotPasswordBinding binding;
 
     FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forgot_password);
+        binding = ActivityForgotPasswordBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        setSupportActionBar(binding.toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("Forgot Password?");
 
         emailEditText = (EditText) findViewById(R.id.email);
         resetPasswordButton = (Button) findViewById(R.id.resetPassword);
@@ -71,5 +81,15 @@ public class ForgotPassword extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -16,15 +16,6 @@ public class SourcePlanner {
     private LocalDate date;
     private String address;
 
-    public static ArrayList<SourcePlanner> eventsForDate(LocalDate date) {
-        ArrayList<SourcePlanner> sourcePlanners = new ArrayList<>();
-        for (SourcePlanner sourcePlanner: sourcePlannerArrayList) {
-            if (sourcePlanner.getDate().equals(date))
-                sourcePlanners.add(sourcePlanner);
-        }
-        return sourcePlanners;
-    }
-
     public SourcePlanner(Integer id, String judul, String deskripsi, String time, LocalDate date, String address){
         this.id = id;
         this.judul = judul;
@@ -58,15 +49,6 @@ public class SourcePlanner {
                 return plan;
         }
         return null;
-    }
-
-    public static ArrayList<SourcePlanner> nonDeletedPlans() {
-        ArrayList<SourcePlanner> nonDeleted = new ArrayList<>();
-        for (SourcePlanner plan : sourcePlannerArrayList) {
-            if (plan.getDate() == null)
-                nonDeleted.add(plan);
-        }
-        return nonDeleted;
     }
 
     public String getJudul() {
@@ -105,7 +87,4 @@ public class SourcePlanner {
     public void setDeskripsi(String deskripsi) {
         this.deskripsi = deskripsi;
     }
-//    public String toString() {
-//        return this.getJudul() + " => " + this.getDeskripsi();
-//    }
 }

@@ -7,6 +7,21 @@
     tools:context=".LoginUser"
     android:background="@drawable/bg4">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.Test.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/Theme.Test.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <TextView
         android:id="@+id/banner"
         android:layout_width="match_parent"
@@ -20,7 +35,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="60dp"/>
 
     <TextView
         android:id="@+id/bannerDescription"

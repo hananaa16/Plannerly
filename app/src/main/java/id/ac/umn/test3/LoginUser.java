@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,11 +20,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import id.ac.umn.test3.databinding.ActivityLoginUserBinding;
+
 public class LoginUser extends AppCompatActivity implements View.OnClickListener {
 
     private TextView register, forgotPassword;
     private EditText editTextEmail, editTextPassword;
     private Button signIn;
+    private ActivityLoginUserBinding binding;
 
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
@@ -31,7 +35,11 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_user);
+        binding = ActivityLoginUserBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        setSupportActionBar(binding.toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Login");
 
         register = (TextView) findViewById(R.id.register);
         register.setOnClickListener(this);
