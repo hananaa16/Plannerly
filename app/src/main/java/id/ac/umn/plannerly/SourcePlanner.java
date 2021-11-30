@@ -1,12 +1,8 @@
-package id.ac.umn.test3;
+package id.ac.umn.plannerly;
 
 import com.google.firebase.Timestamp;
 
-import java.text.ParseException;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class SourcePlanner {
     public static ArrayList<SourcePlanner> sourcePlannerArrayList = new ArrayList<>();

@@ -1,4 +1,4 @@
-package id.ac.umn.test3;
+package id.ac.umn.plannerly;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import id.ac.umn.test3.databinding.ActivityLoginUserBinding;
+import id.ac.umn.plannerly.databinding.ActivityLoginUserBinding;
 
 public class LoginUser extends AppCompatActivity implements View.OnClickListener {
 

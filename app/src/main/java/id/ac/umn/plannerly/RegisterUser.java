@@ -1,4 +1,4 @@
-package id.ac.umn.test3;
+package id.ac.umn.plannerly;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,9 +18,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 
-import id.ac.umn.test3.databinding.ActivityRegisterUserBinding;
+import id.ac.umn.plannerly.databinding.ActivityRegisterUserBinding;
 
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener {
 

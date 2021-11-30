@@ -1,9 +1,8 @@
-package id.ac.umn.test3;
+package id.ac.umn.plannerly;
 
-import static id.ac.umn.test3.CalendarUtils.daysInMonthArray;
-import static id.ac.umn.test3.CalendarUtils.monthYearFromDate;
+import static id.ac.umn.plannerly.CalendarUtils.daysInMonthArray;
+import static id.ac.umn.plannerly.CalendarUtils.monthYearFromDate;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import id.ac.umn.test3.databinding.ActivityMonthlyViewBinding;
+import id.ac.umn.plannerly.databinding.ActivityMonthlyViewBinding;
 
 public class MonthlyView extends AppCompatActivity implements CalendarAdapter.OnItemListener {
     private TextView monthYearText;

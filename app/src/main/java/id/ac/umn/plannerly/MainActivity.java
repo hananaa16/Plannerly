@@ -1,20 +1,11 @@
-package id.ac.umn.test3;
-
-import static id.ac.umn.test3.CalendarUtils.daysInMonthArray;
-import static id.ac.umn.test3.CalendarUtils.monthYearFromDate;
+package id.ac.umn.plannerly;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     @Override

@@ -1,4 +1,4 @@
-package id.ac.umn.test3;
+package id.ac.umn.plannerly;
 
 import android.view.View;
 import android.widget.TextView;

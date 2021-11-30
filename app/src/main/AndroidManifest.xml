@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="id.ac.umn.test3" >
+    package="id.ac.umn.plannerly" >
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -12,32 +12,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Test3" >
         <activity
-            android:name=".MonthlyView"
+            android:name="id.ac.umn.plannerly.MonthlyView"
             android:exported="true"
             android:label="Monthly Calendar"
             android:theme="@style/Theme.Test3.NoActionBar" />
         <activity
-            android:name=".DailyCalendarActivity"
+            android:name="id.ac.umn.plannerly.DailyCalendarActivity"
             android:exported="true"
             android:label="Daily Calendar" />
         <activity
-            android:name=".WeekViewActivity"
+            android:name="id.ac.umn.plannerly.WeekViewActivity"
             android:exported="true"
             android:label="Weekly Calendar" />
         <activity
-            android:name=".AddActivity"
+            android:name="id.ac.umn.plannerly.AddActivity"
             android:exported="true" />
         <activity
-            android:name=".ForgotPassword"
+            android:name="id.ac.umn.plannerly.ForgotPassword"
             android:exported="true" />
         <activity
-            android:name=".RegisterUser"
+            android:name="id.ac.umn.plannerly.RegisterUser"
             android:exported="true" />
         <activity
-            android:name=".LoginUser"
+            android:name="id.ac.umn.plannerly.LoginUser"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name="id.ac.umn.plannerly.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

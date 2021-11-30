@@ -1,6 +1,6 @@
-package id.ac.umn.test3;
+package id.ac.umn.plannerly;
 
-import static id.ac.umn.test3.CalendarUtils.selectedDate;
+import static id.ac.umn.plannerly.CalendarUtils.selectedDate;
 
 import android.Manifest;
 import android.app.ProgressDialog;
@@ -34,8 +34,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -46,14 +44,12 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
-import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedList;
 
-import id.ac.umn.test3.databinding.ActivityAddBinding;
+import id.ac.umn.plannerly.databinding.ActivityAddBinding;
 
 public class AddActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST =1;

@@ -1,4 +1,4 @@
-package id.ac.umn.test3;
+package id.ac.umn.plannerly;
 
 import android.os.Bundle;
 import android.util.Patterns;
@@ -16,7 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
-import id.ac.umn.test3.databinding.ActivityForgotPasswordBinding;
+import id.ac.umn.plannerly.databinding.ActivityForgotPasswordBinding;
 
 public class ForgotPassword extends AppCompatActivity {
 

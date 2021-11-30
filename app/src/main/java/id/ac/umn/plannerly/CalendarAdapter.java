@@ -1,4 +1,4 @@
-package id.ac.umn.test3;
+package id.ac.umn.plannerly;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
