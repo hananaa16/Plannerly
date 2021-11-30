@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -88,6 +90,23 @@ public class WeekViewActivity extends AppCompatActivity {
         context =this;
         adapter = new EventAdapter(options,context);
         weeklyListView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new EventAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                SourcePlanner sp = documentSnapshot.toObject(SourcePlanner.class);
+                String id = documentSnapshot.getId();
+                String path = documentSnapshot.getReference().getPath();
+                Intent intent = new Intent(context, DailyCalendarActivity.class);
+                intent.putExtra("pass", id);
+                context.startActivity(intent);
+            }
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        });
     }
 
     public void dropdownAction(View view) {
@@ -107,7 +126,6 @@ public class WeekViewActivity extends AppCompatActivity {
         });
         dropDownMenu.show();
     }
-
 
     @Override
     protected void onStart() {

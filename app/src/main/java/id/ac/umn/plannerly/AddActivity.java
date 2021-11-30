@@ -37,6 +37,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
@@ -53,7 +54,6 @@ import id.ac.umn.plannerly.databinding.ActivityAddBinding;
 
 public class AddActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST =1;
-//    private DatabaseReference reference;
     DocumentReference referenceUser;
     CollectionReference referenceTask;
     private FirebaseAuth mAuth;
@@ -142,7 +142,6 @@ public class AddActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 addPlanner();
-
             }
         });
     }

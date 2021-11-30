@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
@@ -21,6 +23,7 @@ public class EventAdapter extends FirestoreRecyclerAdapter<SourcePlanner, EventA
     Context context2;
     DateFormat formatter;
     String formattedDate;
+    private OnItemClickListener listener;
 
     public EventAdapter(@NonNull FirestoreRecyclerOptions<SourcePlanner> options, Context context) {
         super(options);
@@ -60,6 +63,24 @@ public class EventAdapter extends FirestoreRecyclerAdapter<SourcePlanner, EventA
             libraryTime = (TextView) itemView.findViewById(R.id.tvWaktuTask);
             libraryDate = (TextView) itemView.findViewById(R.id.tvTanggalTask);
             libraryImage= itemView.findViewById(R.id.ivGambarTask);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getLayoutPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.onItemClick(getSnapshots().getSnapshot(position), position);
+                    }
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener extends AdapterView.OnItemClickListener {
+        void onItemClick(DocumentSnapshot documentSnapshot, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 }

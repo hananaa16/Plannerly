@@ -17,16 +17,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class PlanAdapter extends FirestoreRecyclerAdapter<SourcePlanner, PlanAdapter.ItemVideoViewholder> {
     Context context2;
@@ -42,11 +48,11 @@ public class PlanAdapter extends FirestoreRecyclerAdapter<SourcePlanner, PlanAda
     TextView title;
     DateFormat formatter;
     String formattedDate;
+    ArrayList<SourcePlanner> sp;
 
     public PlanAdapter(@NonNull FirestoreRecyclerOptions<SourcePlanner> options, Context context) {
         super(options);
         this.context2 = context;
-
     }
 
 
@@ -89,10 +95,9 @@ public class PlanAdapter extends FirestoreRecyclerAdapter<SourcePlanner, PlanAda
         holder.btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                updateFile(key,reference);
+                updateFile(key);
             }
         });
-
     }
 
     public void deleteFile(String key){
@@ -102,18 +107,16 @@ public class PlanAdapter extends FirestoreRecyclerAdapter<SourcePlanner, PlanAda
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()){
-                        Toast.makeText(context2, "Task deleted successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context2, "Plan deleted successfully", Toast.LENGTH_SHORT).show();
                     }else {
                         String err = task.getException().toString();
-                        Toast.makeText(context2, "Failed to delete task "+ err, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context2, "Failed to delete plan"+ err, Toast.LENGTH_SHORT).show();
                     }
                 }
             });
     }
 
-    public void updateFile(String key, String judul, String deskripsi, String address, String waktu, Timestamp date, String imageUrl){
-        Intent edit = new Intent(context2, AddActivity.class);
-        context2.startActivity(edit);
+    public void updateFile(String key){
     }
 
     @NonNull
