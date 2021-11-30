@@ -50,6 +50,7 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
         forgotPassword.setOnClickListener(this);
     }
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){

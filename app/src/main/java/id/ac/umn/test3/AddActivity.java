@@ -31,10 +31,14 @@ import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
@@ -43,6 +47,8 @@ import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
@@ -51,7 +57,9 @@ import id.ac.umn.test3.databinding.ActivityAddBinding;
 
 public class AddActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST =1;
-    private DatabaseReference reference;
+//    private DatabaseReference reference;
+    DocumentReference referenceUser;
+    CollectionReference referenceTask;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private String onlineUserID;
@@ -74,8 +82,8 @@ public class AddActivity extends AppCompatActivity {
     String storagePermission[];
     private StorageTask mUploadTask;
     private StorageReference mStorageRef;
-    private DatabaseReference mDatabaseRef;
-    String date;
+    private CollectionReference mDatabaseRef;
+  Timestamp date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +101,9 @@ public class AddActivity extends AppCompatActivity {
         loader = new ProgressDialog(this);
         mUser = mAuth.getCurrentUser();
         onlineUserID = mUser.getUid();
-        reference = FirebaseDatabase.getInstance().getReference().child("tasks").child(onlineUserID);
+//        FirebaseDatabase.getInstance().getReference().child("tasks").child(onlineUserID);
+        referenceUser = FirebaseFirestore.getInstance().collection("users").document(onlineUserID);
+        referenceTask = FirebaseFirestore.getInstance().collection("tasks");
 
         title = (TextView) findViewById(R.id.titleAdd);
         etJudul = findViewById(R.id.judulAdd);
@@ -101,10 +111,16 @@ public class AddActivity extends AppCompatActivity {
         etWaktu = findViewById(R.id.waktuAdd);
         etAddress = findViewById(R.id.addressDesc);
         btnAdd = findViewById(R.id.add);
-        date = selectedDate.toString();
+        Date date2= convertToDateViaInstant(selectedDate);
+        date = new Timestamp(date2);
+//        date= selectedDate.toString();
+//        date= new Timestamp(new Date());
+//        Date date2 = new Date();
 
         mStorageRef = FirebaseStorage.getInstance().getReference("image_uploads");
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("image_uploads");
+        mDatabaseRef = FirebaseFirestore.getInstance().collection("image_uploads");
+
+//        mDatabaseRef = FirebaseDatabase.getInstance().getReference("image_uploads");
 
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
         awesomeValidation.addValidation(this, R.id.judulAdd, RegexTemplate.NOT_EMPTY, R.string.invalid_judul);
@@ -140,10 +156,15 @@ public class AddActivity extends AppCompatActivity {
             }
         });
     }
+    public Date convertToDateViaInstant(LocalDate dateToConvert) {
+        return java.util.Date.from(dateToConvert.atStartOfDay()
+                .atZone(ZoneId.systemDefault())
+                .toInstant());
+    }
 
     private void addPlanner(){
         title.setText("Add Your New Planner!");
-        String key = reference.push().getKey();
+        String key = referenceUser.getId();
         String judul = etJudul.getText().toString();
         String waktu = etWaktu.getText().toString();
         String deskripsi = etDeskripsi.getText().toString();
@@ -168,9 +189,9 @@ public class AddActivity extends AppCompatActivity {
                                         }else {
                                             sp = new SourcePlanner(key, judul, deskripsi, waktu, date, address, String.valueOf(task.getResult()));
                                         }
-                                        reference.child(key).setValue(sp).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        referenceTask.add(sp).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                             @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
+                                            public void onComplete(@NonNull Task<DocumentReference> task) {
                                                 if (task.isSuccessful()) {
                                                     Toast.makeText(getApplicationContext(), "Your plan is successfully added.", Toast.LENGTH_SHORT).show();
                                                     loader.dismiss();
@@ -179,8 +200,22 @@ public class AddActivity extends AppCompatActivity {
                                                     Toast.makeText(getApplicationContext(), "Failed to add your plan", Toast.LENGTH_SHORT).show();
                                                     loader.dismiss();
                                                 }
+
                                             }
                                         });
+//                                        referenceTask.set(sp).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                            @Override
+//                                            public void onComplete(@NonNull Task<Void> task) {
+//                                                if (task.isSuccessful()) {
+//                                                    Toast.makeText(getApplicationContext(), "Your plan is successfully added.", Toast.LENGTH_SHORT).show();
+//                                                    loader.dismiss();
+//                                                } else {
+//                                                    String error = task.getException().toString();
+//                                                    Toast.makeText(getApplicationContext(), "Failed to add your plan", Toast.LENGTH_SHORT).show();
+//                                                    loader.dismiss();
+//                                                }
+//                                            }
+//                                        });
 
                                     }
                                 });
@@ -195,9 +230,9 @@ public class AddActivity extends AppCompatActivity {
                 }else{
                     sp = new SourcePlanner(key, judul, deskripsi, waktu, date, address);
                 }
-                reference.child(key).setValue(sp).addOnCompleteListener(new OnCompleteListener<Void>() {
+                referenceTask.add(sp).addOnCompleteListener(new OnCompleteListener<DocumentReference>(){
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
+                    public void onComplete(@NonNull Task<DocumentReference> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Your plan is successfully added.", Toast.LENGTH_SHORT).show();
                             loader.dismiss();
@@ -284,7 +319,7 @@ public class AddActivity extends AppCompatActivity {
 
 //    private void checkForEditPlan() {
 //        Intent previousIntent = getIntent();
-//        int passedPlanID = previousIntent.getIntExtra(SourcePlanner.NOTE_EDIT_EXTRA, -1);
+//        passedPlanID = previousIntent.getIntExtra(SourcePlanner.NOTE_EDIT_EXTRA, -1);
 //        selectedPlan = SourcePlanner.getPlanForID(passedPlanID);
 //        if (selectedPlan != null) {
 //            title.setText("Edit Your Planner!");

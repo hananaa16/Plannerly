@@ -1,5 +1,7 @@
 package id.ac.umn.test3;
 
+import com.google.firebase.Timestamp;
+
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,13 +13,13 @@ public class SourcePlanner {
 //    public static String NOTE_EDIT_EXTRA = "noteEdit";
 //    private int id;
     private String judul, id, deskripsi,time;
-    private String date;
+    private Timestamp date;
     private String address;
     private String imageURL;
 
     public SourcePlanner(){}
 
-    public SourcePlanner(String id, String judul, String deskripsi, String time, String date, String address, String imageUrl){
+    public SourcePlanner(String id, String judul, String deskripsi, String time, Timestamp date, String address, String imageUrl){
         this.id = id;
         this.judul = judul;
         this.deskripsi = deskripsi;
@@ -27,7 +29,7 @@ public class SourcePlanner {
         this.imageURL = imageUrl;
     }
 
-    public SourcePlanner(String id, String judul, String deskripsi, String time, String date, String address){
+    public SourcePlanner(String id, String judul, String deskripsi, String time, Timestamp date, String address){
         this.id = id;
         this.judul = judul;
         this.deskripsi = deskripsi;
@@ -36,7 +38,7 @@ public class SourcePlanner {
         this.address = address;
     }
 
-    public SourcePlanner(String id, String judul, String deskripsi, String time, String  date){
+    public SourcePlanner(String id, String judul, String deskripsi, String time, Timestamp date){
         this.id = id;
         this.judul = judul;
         this.deskripsi = deskripsi;
@@ -44,8 +46,6 @@ public class SourcePlanner {
         this.date = date;
 
     }
-
-
 
 
     public String getJudul() {
@@ -60,7 +60,7 @@ public class SourcePlanner {
     public String getId() {
         return id;
     }
-    public String getDate() {
+    public Timestamp getDate() {
         return date;
     }
     public String getAddress() {
@@ -69,7 +69,7 @@ public class SourcePlanner {
     public void setAddress(String address) {
         this.address = address;
     }
-    public void setDate(String date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
     public void setId(String id) {

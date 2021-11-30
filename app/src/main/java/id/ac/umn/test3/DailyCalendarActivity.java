@@ -23,17 +23,25 @@ import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Predicate;
@@ -46,7 +54,6 @@ public class DailyCalendarActivity extends AppCompatActivity {
     RecyclerView planListView;
     ArrayList<SourcePlanner> dailyEvents = SourcePlanner.sourcePlannerArrayList;
     private ActivityDailyCalendarBinding binding;
-    private DatabaseReference reference;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private String onlineUserID;
@@ -56,6 +63,8 @@ public class DailyCalendarActivity extends AppCompatActivity {
     private String description;
     private Uri mImageUri;
     PlanAdapter planAdapter;
+    private FirebaseFirestore db;
+    private CollectionReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,20 +92,44 @@ public class DailyCalendarActivity extends AppCompatActivity {
         setPlanAdapter();
     }
 
+    public Date convertToDateViaInstant(LocalDate dateToConvert) {
+        return java.util.Date.from(dateToConvert.atStartOfDay()
+                .atZone(ZoneId.systemDefault())
+                .toInstant());
+    }
+
     private void setPlanAdapter() {
 
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         onlineUserID = mUser.getUid();
-        reference = FirebaseDatabase.getInstance().getReference().child("tasks").child(onlineUserID);
 
-        FirebaseRecyclerOptions<SourcePlanner> options = new FirebaseRecyclerOptions.Builder<SourcePlanner>()
-        .setQuery(reference.orderByChild("date").equalTo(selectedDate.toString()), SourcePlanner.class)
+        Date date2= convertToDateViaInstant(selectedDate);
+        Date date3= convertToDateViaInstant(selectedDate.plusDays(8));
+        Timestamp timestamp1 = new Timestamp(date2);
+        Timestamp timestamp2 = new Timestamp(date3);
+//        Timestamp timestamp = new Timestamp(new Date());
+
+        FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+        Query query = rootRef.collection("tasks")
+                .whereEqualTo("id",onlineUserID)
+                .whereEqualTo("date",timestamp1);
+//                .whereGreaterThanOrEqualTo("date",timestamp1)
+//                .whereLessThanOrEqualTo("date",timestamp2);
+
+        FirestoreRecyclerOptions<SourcePlanner> options = new FirestoreRecyclerOptions.Builder<SourcePlanner>()
+        .setQuery(query, SourcePlanner.class)
         .build();
+
         Context context;
         context =this;
         planAdapter = new PlanAdapter(options,context);
         planListView.setAdapter(planAdapter);
+
+        //        reference = FirebaseDatabase.getInstance().getReference().child("tasks").child(onlineUserID);
+//        FirebaseRecyclerOptions<SourcePlanner> options = new FirebaseRecyclerOptions.Builder<SourcePlanner>()
+//        .setQuery(reference.orderByChild("date").equalTo(selectedDate.toString()), SourcePlanner.class)
+//        .build();
 
 //        Predicate<SourcePlanner> condition = dailyEvent -> !LocalDate.parse(dailyEvent.getDate()).equals(selectedDate);
 //        dailyEvents.removeIf(condition);
@@ -124,7 +157,7 @@ public class DailyCalendarActivity extends AppCompatActivity {
         super.onResume();
 //        dailyEvents.clear();
 ////        loadFromDBToMemory();
-//        setDayView();
+
     }
 
     private void setDayView() {
