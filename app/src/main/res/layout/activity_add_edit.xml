@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg4"
+    android:orientation="vertical"
+    tools:context=".AddEditActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.Test.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/Theme.Test.PopupOverlay" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/titleAdd"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginLeft="50sp"
+        android:layout_marginTop="50sp"
+        android:layout_marginRight="50sp"
+        android:background="@drawable/title"
+        android:backgroundTint="@color/hijau3"
+        android:gravity="center"
+        android:text="Add Your New Planner!"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/iconAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="-70dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/icon"
+        android:backgroundTint="@color/pink1"
+        android:gravity="center"
+        android:padding="8dp"
+        android:src="@drawable/ic_baseline_edit_24"
+        android:textColor="@color/white" />
+
+    <ImageView
+        android:id="@+id/iconAdd1"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="300sp"
+        android:height="50dp"
+        android:background="@drawable/outer"
+        android:padding="5dp"
+        android:src="@drawable/ic_baseline_title_24" />
+
+    <EditText
+        android:id="@+id/judulAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110sp"
+        android:layout_marginTop="-50dp"
+        android:layout_marginRight="50sp"
+        android:height="50sp"
+        android:background="@drawable/outer"
+        android:gravity="center"
+        android:hint="Title" />
+
+    <EditText
+        android:id="@+id/deskripsiAdd"
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:layout_marginLeft="50sp"
+        android:layout_marginRight="50sp"
+        android:height="100sp"
+        android:background="@drawable/outer"
+        android:gravity="center"
+        android:hint="Description" />
+
+    <ImageView
+        android:id="@+id/iconAdd2"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50sp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="300sp"
+        android:height="30sp"
+        android:background="@drawable/outer"
+        android:padding="5dp"
+        android:src="@drawable/ic_baseline_access_time_filled_24" />
+
+    <EditText
+        android:id="@+id/waktuAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110sp"
+        android:layout_marginTop="-50dp"
+        android:layout_marginRight="50sp"
+        android:height="50sp"
+        android:background="@drawable/outer"
+        android:gravity="center"
+        android:hint="00:00 (24h Format)" />
+
+    <ImageView
+        android:id="@+id/iconAdd3"
+        android:layout_width="60dp"
+        android:layout_height="103dp"
+        android:layout_marginLeft="50sp"
+        android:layout_marginTop="-5dp"
+        android:layout_marginRight="300sp"
+        android:height="50sp"
+        android:background="@drawable/outer"
+        android:padding="5dp"
+        android:src="@drawable/ic_baseline_image_search_24" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="97dp"
+        android:layout_marginLeft="110sp"
+        android:layout_marginTop="-97dp"
+        android:layout_marginRight="50sp"
+        android:height="50sp"
+        android:gravity="center"
+        android:src="@drawable/outerimage" />
+
+    <ImageView
+        android:id="@+id/pickImage"
+        android:layout_width="match_parent"
+        android:layout_height="97dp"
+        android:layout_marginLeft="110sp"
+        android:layout_marginTop="-97dp"
+        android:layout_marginRight="50sp"
+        android:height="50sp"
+        android:gravity="center"
+        android:src="@drawable/outerimage" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50sp"
+        android:layout_marginRight="50sp"
+        android:height="35sp"
+        android:background="@drawable/outer"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="Location" />
+
+    <EditText
+        android:id="@+id/addressDesc"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:layout_marginLeft="50sp"
+        android:layout_marginRight="50sp"
+        android:height="100sp"
+        android:background="@drawable/outer"
+        android:gravity="center"
+        android:hint="Address" />
+
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="150dp"
+        android:backgroundTint="@color/hijau1"
+        android:padding="15dp"
+        android:text="Add"
+        android:textColor="@color/white" />
+
+</LinearLayout>
