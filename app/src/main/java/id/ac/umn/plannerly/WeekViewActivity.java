@@ -48,17 +48,6 @@ public class WeekViewActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
         initWidgets();
-
-        adapter.setOnItemClickListener(new WeeklyAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                SourcePlanner sp = documentSnapshot.toObject(SourcePlanner.class);
-                Intent intent = new Intent(WeekViewActivity.this, DailyCalendarWeekActivity.class);
-                intent.putExtra("tanggal", sp.getDate().toDate());
-                intent.putExtra("stringtanggal", sp.getDate().toString());
-                startActivity(intent);
-            }
-        });
     }
 
     private void initWidgets() {

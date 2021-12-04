@@ -25,7 +25,6 @@ public class WeeklyAdapter extends FirestoreRecyclerAdapter<SourcePlanner, Weekl
     Context context2;
     DateFormat formatter;
     String formattedDate;
-    private OnItemClickListener listener;
 
     public WeeklyAdapter(@NonNull FirestoreRecyclerOptions<SourcePlanner> options, Context context) {
         super(options);
@@ -65,23 +64,6 @@ public class WeeklyAdapter extends FirestoreRecyclerAdapter<SourcePlanner, Weekl
             libraryTime = (TextView) itemView.findViewById(R.id.tvWaktuTask);
             libraryDate = (TextView) itemView.findViewById(R.id.tvTanggalTask);
             libraryImage= itemView.findViewById(R.id.ivGambarTask);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION && listener != null) {
-                        listener.onItemClick(getSnapshots().getSnapshot(position), position);
-                    }
-                }
-            });
         }
-    }
-
-    public interface OnItemClickListener {
-        void onItemClick(DocumentSnapshot documentSnapshot, int position);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.listener = listener;
     }
 }

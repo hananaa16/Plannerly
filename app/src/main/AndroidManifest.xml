@@ -14,9 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Test3">
         <activity
-            android:name=".DailyCalendarWeekActivity"
-            android:exported="true" />
-        <activity
             android:name=".MonthlyView"
             android:exported="true"
             android:label="Monthly Calendar"
