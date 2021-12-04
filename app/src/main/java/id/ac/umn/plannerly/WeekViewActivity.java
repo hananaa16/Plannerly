@@ -3,6 +3,7 @@ package id.ac.umn.plannerly;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -46,6 +48,17 @@ public class WeekViewActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
         initWidgets();
+
+        adapter.setOnItemClickListener(new WeeklyAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                SourcePlanner sp = documentSnapshot.toObject(SourcePlanner.class);
+                Intent intent = new Intent(WeekViewActivity.this, DailyCalendarWeekActivity.class);
+                intent.putExtra("tanggal", sp.getDate().toDate());
+                intent.putExtra("stringtanggal", sp.getDate().toString());
+                startActivity(intent);
+            }
+        });
     }
 
     private void initWidgets() {
@@ -53,7 +66,7 @@ public class WeekViewActivity extends AppCompatActivity {
         picker = findViewById(R.id.picker);
         weeklyListView = (RecyclerView) findViewById(R.id.weeklyRecyclerView);
         weeklyListView.setLayoutManager(new LinearLayoutManager(this));
-        setEventAdapter();
+        setWeeklyAdapter();
     }
 
     public Date convertToDateViaInstant(LocalDate dateToConvert) {
@@ -62,7 +75,7 @@ public class WeekViewActivity extends AppCompatActivity {
                 .toInstant());
     }
 
-    private void setEventAdapter() {
+    private void setWeeklyAdapter() {
 
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();

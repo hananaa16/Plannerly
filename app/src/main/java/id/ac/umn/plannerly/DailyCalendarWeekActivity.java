@@ -31,12 +31,13 @@ import java.util.Date;
 import java.util.Locale;
 
 import id.ac.umn.plannerly.databinding.ActivityDailyCalendarBinding;
+import id.ac.umn.plannerly.databinding.ActivityDailyCalendarWeekBinding;
 
-public class DailyCalendarActivity extends AppCompatActivity {
+public class DailyCalendarWeekActivity extends AppCompatActivity {
     private TextView monthDayText;
     private TextView dayOfWeekTV;
     RecyclerView planListView;
-    private ActivityDailyCalendarBinding binding;
+    private ActivityDailyCalendarWeekBinding binding;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private String onlineUserID;
@@ -51,15 +52,16 @@ public class DailyCalendarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityDailyCalendarBinding.inflate(getLayoutInflater());
+        binding = ActivityDailyCalendarWeekBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        setTitle("Daily Calendar");
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(DailyCalendarActivity.this, AddEditActivity.class));
+                startActivity(new Intent(DailyCalendarWeekActivity.this, AddEditActivity.class));
             }
         });
         initWidgets();
@@ -85,8 +87,9 @@ public class DailyCalendarActivity extends AppCompatActivity {
         mUser = mAuth.getCurrentUser();
         onlineUserID = mUser.getUid();
 
-        Date date2 = convertToDateViaInstant(selectedDate);
-        Timestamp timestamp1 = new Timestamp(date2);
+        Intent intent = getIntent();
+        Date date = (Date) getIntent().getSerializableExtra("tanggal");
+        Timestamp timestamp1 = new Timestamp(date);
 
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
         Query query = rootRef.collection("tasks")
@@ -101,6 +104,7 @@ public class DailyCalendarActivity extends AppCompatActivity {
         context = this;
         dailyAdapter = new DailyAdapter(options,context);
         planListView.setAdapter(dailyAdapter);
+        intent.removeExtra("tanggal");
     }
 
 
@@ -123,7 +127,7 @@ public class DailyCalendarActivity extends AppCompatActivity {
     }
 
     private void setDayView() {
-        monthDayText.setText(CalendarUtils.monthDayFromDate(selectedDate));
+        monthDayText.setText((CharSequence) getIntent().getSerializableExtra("stringtanggal"));
         String dayOfWeek = selectedDate.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault());
         dayOfWeekTV.setText(dayOfWeek);
     }
@@ -142,7 +146,7 @@ public class DailyCalendarActivity extends AppCompatActivity {
                 return true;
             case R.id.action_logout:
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(DailyCalendarActivity.this, LoginUser.class));
+                startActivity(new Intent(DailyCalendarWeekActivity.this, LoginUser.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
