@@ -235,8 +235,7 @@ public class AddActivity extends AppCompatActivity {
         title.setText("Edit Your Planner!");
         String key = keyupdate;
         String doc = docname;
-//        String judul = etJudul.getText().toString();
-        String judul = imageUrlupdate;
+        String judul = etJudul.getText().toString();
         String waktu = etWaktu.getText().toString();
         String deskripsi = etDeskripsi.getText().toString();
         String address = etAddress.getText().toString().trim();
@@ -307,6 +306,9 @@ public class AddActivity extends AppCompatActivity {
             }
         }
         check = 0;
+        keyupdate="";
+        docname="";
+
     }
 
     private void requestStoragePermission() {
@@ -388,13 +390,14 @@ public class AddActivity extends AppCompatActivity {
             String deskripsiupdate = previousIntent.getStringExtra("deskripsiupdate");
             String waktuupdate = previousIntent.getStringExtra("waktuupdate");
 //            String dateupdate = previousIntent.getStringExtra("dateupdate");
-//            ImageView imageup = (ImageView)findViewById(R.id.pickImage);
+
             imageUrlupdate = previousIntent.getStringExtra("imageUrlupdate");
-//            Picasso.with(this)
-//                    .load(imageUrlupdate)
-//                    .fit()
-//                    .centerCrop()
-//                    .into(imageup);
+            ImageView imageup = (ImageView)findViewById(R.id.pickImage);
+            Picasso.with(this)
+                    .load(imageUrlupdate)
+                    .fit()
+                    .centerCrop()
+                    .into(imageup);
             String addressupdate = previousIntent.getStringExtra("addressupdate");
             String judulupdate = previousIntent.getStringExtra("judulupdate");
             title.setText("Edit Your Planner!");
@@ -404,8 +407,12 @@ public class AddActivity extends AppCompatActivity {
             etAddress.setText(addressupdate);
             btnAdd.setText("SAVE");
             test = 1;
+
         }
+        previousIntent.removeExtra(keyupdate);
+        previousIntent.removeExtra(docname);
         return test;
+
     }
 
     @Override

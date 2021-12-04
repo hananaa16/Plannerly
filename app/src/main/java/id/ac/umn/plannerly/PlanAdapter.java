@@ -3,6 +3,7 @@ package id.ac.umn.plannerly;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PlanAdapter extends FirestoreRecyclerAdapter<SourcePlanner, PlanAdapter.ItemVideoViewholder> {
     Context context2;
@@ -45,9 +47,11 @@ public class PlanAdapter extends FirestoreRecyclerAdapter<SourcePlanner, PlanAda
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private String onlineUserID;
+    String date2;
     TextView title;
     DateFormat formatter;
     String formattedDate;
+    String docname;
     ArrayList<SourcePlanner> sp;
 
     public PlanAdapter(@NonNull FirestoreRecyclerOptions<SourcePlanner> options, Context context) {
@@ -75,16 +79,6 @@ public class PlanAdapter extends FirestoreRecyclerAdapter<SourcePlanner, PlanAda
         onlineUserID = mUser.getUid();
         reference = FirebaseFirestore.getInstance().collection("tasks");
 
-        String docname =  getSnapshots().getSnapshot(position).getReference().getId();
-        key = model.getId();
-        judul = model.getJudul();
-        deskripsi = model.getDeskripsi();
-        address = model.getAddress();
-        date = model.getDate();
-        String date2 = date.toDate().toString();
-        waktu = model.getTime();
-        imageUrl = model.getImageURL();
-
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,16 +88,15 @@ public class PlanAdapter extends FirestoreRecyclerAdapter<SourcePlanner, PlanAda
         holder.btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent edit = new Intent(context2, AddActivity.class);
-                edit.putExtra("keyupdate",key);
-                edit.putExtra("docname",docname);
-                edit.putExtra("judulupdate",judul);
-                edit.putExtra("addressupdate",address);
-                edit.putExtra("dateupdate",date2);
-                edit.putExtra("waktuupdate",waktu);
-                edit.putExtra("imageUrlupdate",imageUrl);
-                edit.putExtra("deskripsiupdate",deskripsi);
-                context2.startActivity(edit);
+                String key = model.getId();
+                String judul = model.getJudul();
+                String deskripsi = model.getDeskripsi();
+                String address = model.getAddress();
+                Timestamp date = model.getDate();
+                String date2 = date.toDate().toString();
+                String waktu = model.getTime();
+                String imageUrl = model.getImageURL();
+                updateFile(holder.getAdapterPosition(),key,judul,deskripsi,address,date2,waktu,imageUrl);
             }
         });
     }
@@ -120,6 +113,23 @@ public class PlanAdapter extends FirestoreRecyclerAdapter<SourcePlanner, PlanAda
                     }
                 }
             });
+    }
+
+    public void updateFile(int position,String key,String judul,String deskripsi, String address, String date2, String waktu,String imageUrl){
+        String docname=getSnapshots().getSnapshot(position).getId();
+        Intent edit = new Intent(context2, AddActivity.class);
+        edit.putExtra("keyupdate",key);
+        edit.putExtra("docname",docname);
+        edit.putExtra("judulupdate",judul);
+        edit.putExtra("addressupdate",address);
+        edit.putExtra("dateupdate",date2);
+        edit.putExtra("waktuupdate",waktu);
+        edit.putExtra("imageUrlupdate",imageUrl);
+        edit.putExtra("deskripsiupdate",deskripsi);
+//        Log.i("chartKey==", docname);
+//        Log.i("chartKey==", judul);
+//        Log.i("chartKey==", imageUrl);
+        context2.startActivity(edit);
     }
 
 
