@@ -279,9 +279,9 @@ public class AddEditActivity extends AppCompatActivity {
             else {
                 SourcePlanner sp;
                 if (address.equals("")) {
-                    sp = new SourcePlanner(key, judul, deskripsi, waktu, date);
+                    sp = new SourcePlanner(key, judul, deskripsi, waktu, imageUrlupdate,date);
                 }else{
-                    sp = new SourcePlanner(key, judul, deskripsi, waktu, date, address);
+                    sp = new SourcePlanner(key, judul, deskripsi, waktu, date, address, imageUrlupdate);
                 }
                 referenceTask.document(doc).set(sp).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

@@ -63,6 +63,7 @@ public class DailyAdapter extends FirestoreRecyclerAdapter<SourcePlanner, DailyA
         holder.libraryJudul.setText(model.getJudul());
         holder.libraryTime.setText(model.getTime());
         holder.libraryDeskripsi.setText(model.getDeskripsi());
+        holder.libraryAddress.setText(model.getAddress());
 
         formatter = new SimpleDateFormat("d MMMM yyyy");
         formattedDate = formatter.format(model.getDate().toDate());
@@ -135,6 +136,7 @@ public class DailyAdapter extends FirestoreRecyclerAdapter<SourcePlanner, DailyA
         private TextView libraryDeskripsi;
         private TextView libraryTime;
         private TextView libraryDate;
+        private TextView libraryAddress;
         private ImageView libraryImage;
         private ImageButton btnDelete;
         private ImageButton btnEdit;
@@ -144,6 +146,7 @@ public class DailyAdapter extends FirestoreRecyclerAdapter<SourcePlanner, DailyA
             libraryTime = (TextView) itemView.findViewById(R.id.tvWaktuTask);
             libraryDeskripsi = (TextView) itemView.findViewById(R.id.tvKetTask);
             libraryDate = (TextView) itemView.findViewById(R.id.tvTanggalTask);
+            libraryAddress = (TextView) itemView.findViewById(R.id.tvLocationTask);
             libraryImage= itemView.findViewById(R.id.ivGambarTask);
             btnDelete = (ImageButton) itemView.findViewById(R.id.btnDeleteTask);
             btnEdit = (ImageButton) itemView.findViewById(R.id.btnEditTask);

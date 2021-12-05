@@ -70,6 +70,13 @@
                     android:text="Keterangan">
                 </TextView>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvLocationTask"
+                    android:text="Location">
+                </TextView>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
